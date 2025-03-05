@@ -15,6 +15,7 @@
 <li>De verschiilende input types</li>
 <li><code>details name="naam"</code></li>
 <li><code>::backdrop</code></li>
+<li>data attribute's toevoegen</li>
 </ul>
 
 **Progressie:** <br>

@@ -16,62 +16,139 @@
         <img src="images/Logo_NS.svg" alt="#">
     </header>
     <main>
-        <h1>HALLO</h1>
         <form>
+            <!-- -=-=-=-=-=-=-=-=-=-=- 1a -=-=-=-=-=-=-=-=-=-=- -->
             <fieldset>
                 <legend>1a</legend>
                 <fieldset>
                     <legend>Naam</legend>
                     <label for="voornaam">Voornaam</label>
                     <input type="text" id="voornaam" name="voornaam" pattern="[A-Za-zÀ-ÿ\s]+"
-                        title="Alleen letters gebruiken"
-                        oninput="this.value = this.value.replace(/[^A-Za-zÀ-ÿ\s]/g, '')" maxlength="50">
+                        title="Alleen letters gebruiken" maxlength="50">
                     <label for="tussenvoegsels">Tussenvoegsels</label>
                     <input type="text" id="tussenvoegsels" name="tussenvoegsels" pattern="[A-Za-zÀ-ÿ\s]+"
-                        title="Alleen letters gebruiken"
-                        oninput="this.value = this.value.replace(/[^A-Za-zÀ-ÿ\s]/g, '')" maxlength="50">
+                        title="Alleen letters gebruiken" maxlength="50">
                     <label for="achternaam">Achternaam</label>
                     <input type="text" id="achternaam" name="achternaam" pattern="[A-Za-zÀ-ÿ\s]+"
-                        title="Alleen letters gebruiken"
-                        oninput="this.value = this.value.replace(/[^A-Za-zÀ-ÿ\s]/g, '')" maxlength="50">
+                        title="Alleen letters gebruiken" maxlength="50">
                 </fieldset>
 
-                <label for="bsn">Burgerservicenummer overledene</label>
-                <input type="number" id="bsn" name="bsn" title="Alleen nummers gebruiken" maxlength="9">
-
-                <label for="overlijdensdatum">Overlijdensdatum</label>
-                <input type="date" id="overlijdensdatum" name="overlijdensdatum" title="Vul een correcte datum in">
+                <label>
+                    Burgerservicenummer overledene
+                    <!-- pc ↓↓↓ -->
+                    <input class="pc" type="text" name="bsn" title="Alleen nummers gebruiken" minlength="9"
+                        maxlength="9">
+                    <!-- mobile ↓↓↓ -->
+                    <input class="mobile" type="number" name="bsn" title="Alleen nummers gebruiken" minlength="9"
+                        maxlength="9">
+                </label>
+                <label>
+                    Overlijdensdatum
+                    <!-- pc ↓↓↓ -->
+                    <input class="pc" type="text" name="overlijdensdatum" title="Vul een correcte datum in"
+                        inputmode="numeric">
+                    <input class="pc" type="text" name="overlijdensdatum" title="Vul een correcte datum in"
+                        inputmode="numeric">
+                    <input class="pc" type="text" name="overlijdensdatum" title="Vul een correcte datum in"
+                        inputmode="numeric">
+                    <!-- mobile ↓↓↓ -->
+                    <input class="mobile" type="date" name="overlijdensdatum" title="Vul een correcte datum in"
+                        inputmode="numeric">
+                </label>
             </fieldset>
 
+            <!-- -=-=-=-=-=-=-=-=-=-=- 1b -=-=-=-=-=-=-=-=-=-=- -->
             <fieldset>
                 <legend>1b</legend>
                 <fieldset>
                     <legend>Was de overledene getrouwd of had de overledene een geregistreerd partner op het moment van
                         overlijden?</legend>
                     <label>
-                        <input type="radio" name="nee" value="nee">Nee. Ga verder met vraag 1c
+                        <input class="skip" type="radio" name="burgerlijke_staat" value="nee" required>Nee. Ga verder
+                        met vraag 1c.
                     </label>
                     <label>
-                        <input type="radio" name="ja" value="ja"> Ja
+                        <input type="radio" name="burgerlijke_staat" value="ja" required> Ja
                     </label>
                 </fieldset>
                 <fieldset>
-                    <legend>Hadden de overledene en diens echtgenoot of geregistreerd partner huwelijkse of partner
-                        schaps-voorwaarden laten vastleggen in een notariële akte?</legend>
+                    <legend>Hadden de overledene en diens echtgenoot of geregistreerd partner huwelijkse of
+                        partnerschaps-voorwaarden laten vastleggen in een notariële akte?</legend>
                     <label>
-                        <input type="radio" name="nee" value="nee">Nee. Ga verder met vraag 1c
+                        <input type="radio" name="huwelijkse_voorwaarden" value="nee">Nee
                     </label>
                     <label>
-                        <input type="radio" name="ja" value="ja"> Ja
+                        <input class="expand" type="radio" name="huwelijkse_voorwaarden" value="ja">Ja. Stuur een kopie
+                        van de akte
+                        mee met de aangifte.
+                        <input class="upload" type="file" id="avatar" name="avatar" accept="image/png, image/jpeg" />
                     </label>
                 </fieldset>
                 <fieldset>
                     <legend>Hadden de overledene en diens partner een finaal verrekenbeding?</legend>
                     <label>
-                        <input type="radio" name="nee" value="nee">Nee. Ga verder met vraag 1c
+                        <input type="radio" name="finaal_verrekenbeding" value="nee">Nee
+                    </label>
+                    <label>
+                        <input type="radio" name="finaal_verrekenbeding" value="ja"> Ja
+                    </label>
+                </fieldset>
+
+                <!-- pc ↓↓↓ -->
+                <label>Overlijdensdatum</label>
+                <input class="pc" type="text" id="overlijdensdatum" name="overlijdensdatum"
+                    title="Vul een correcte datum in" inputmode="numeric">
+                <input type="text" id="overlijdensdatum" name="overlijdensdatum" title="Vul een correcte datum in"
+                    inputmode="numeric">
+                <input class="pc" type="text" id="overlijdensdatum" name="overlijdensdatum"
+                    title="Vul een correcte datum in" inputmode="numeric">
+                <!-- phone ↓↓↓ -->
+                <input class="mobile" type="date" id="overlijdensdatum" name="overlijdensdatum"
+                    title="Vul een correcte datum in">
+            </fieldset>
+
+
+
+            <!-- -=-=-=-=-=-=-=-=-=-=- 1c -=-=-=-=-=-=-=-=-=-=- -->
+            <fieldset>
+                <legend>1c</legend>
+                <fieldset>
+                    <legend>Had de overledene kinderen?</legend>
+                    <label>
+                        <input type="radio" name="nee" value="nee">Nee. Ga verder met vraag 1d.
                     </label>
                     <label>
                         <input type="radio" name="ja" value="ja"> Ja
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>Is 1 van deze kinderen eerder overleden dan de overledene voor wie u nu aangifte doet?.
+                    </legend>
+                    <label>
+                        <input type="radio" name="nee" value="nee">Nee. Ga verder met vraag 1d.
+                    </label>
+                    <label>
+                        <input type="radio" name="ja" value="ja"> Ja
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>Had dit overleden kind zelf kinderen?</legend>
+                    <label>
+                        <input type="radio" name="nee" value="nee">Nee
+                    </label>
+                    <label>
+                        <input type="radio" name="ja" value="ja"> Ja
+                    </label>
+                </fieldset>
+                <fieldset>
+                    <legend>Had de overledene een testament?</legend>
+                    <label>
+                        <input type="radio" name="nee" value="nee">Nee. Ga verder met vraag 2.
+                    </label>
+                    <label>
+                        <input type="radio" name="ja" value="ja"> Ja. <span>Vul de gegevens in van de notaris die het
+                            testament heeft opgemaakt en de
+                            datum van het testament.</span>
                     </label>
                 </fieldset>
             </fieldset>

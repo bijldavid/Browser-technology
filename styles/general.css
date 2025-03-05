@@ -3,59 +3,86 @@
 /* ========================== */
 
 :root {
-    /* colors */
-  
-  
-    /* fonts */
-    --heavy: 900;
-    --extra-bold: 800;
-    --bold: 700;
-    --demi-bold: 600;
-    --medium: 500;
-    --light: 400;
-  
-    /* headings */
-  
-    /* paragraphs */
-  
-    /* padding */
-  
-    interpolate-size: allow-keywords;
-  }
-  
-  
-  *,
-  *::before,
-  *::after {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-  
-  a {
-    text-decoration: none;
-  }
-  
-  ul {
-    list-style-type: none;
-  }
-  
-  h1,
-  h2,
-  h3,
-  h4,
-  a,
-  p {
-    font-family: 'nssans-bold', sans-serif;
-    font-style: normal;
-    font-weight: 100;
-  }
-  
-  img {
-    display: block;
-    width: 100%;
-  }
-  
-  .invisible {
-    display: none;
-  }
+  /* colors */
+
+
+  /* fonts */
+  --heavy: 900;
+  --extra-bold: 800;
+  --bold: 700;
+  --demi-bold: 600;
+  --medium: 500;
+  --light: 400;
+
+  /* headings */
+
+  /* paragraphs */
+
+  /* padding */
+
+  interpolate-size: allow-keywords;
+}
+
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  list-style-type: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+a,
+p,
+form {
+  font-family: 'nssans', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}
+
+img {
+  display: block;
+  width: 100%;
+}
+
+.disabled {
+  display: none !important;
+}
+
+
+.skip:has(input:checked) {
+  background-color: red;
+}
+
+form fieldset:nth-of-type(2):has(.skip:checked)>fieldset:nth-of-type(n + 2) {
+  opacity: .5;
+  pointer-events: none;
+}
+
+.upload {
+  display: none;
+}
+
+form fieldset:nth-of-type(2):has(.expand:checked) .upload {
+  display: block;
+}
+
+input[type="text"] {
+  display: block;
+}
+
+label {
+  display: block;
+}
