@@ -1,26 +1,6 @@
-let phoneInputs = document.querySelectorAll('input.mobile');
-let pcInputs = document.querySelectorAll('input.pc');
+let phoneInputs = document.querySelectorAll('.mobile');
+let pcInputs = document.querySelectorAll('.pc');
 
-
-// function isMobileDevice() {
-//     return /Mobi|Android|iPhone|iPad/i.test(navigator.userAgent);
-// }
-
-// if (isMobileDevice()) {
-//     phoneInputs.forEach(function (phoneInput) {
-//         phoneInput.classList.remove('disabled');
-//     });
-//     pcInputs.forEach(function (pcInput) {
-//         pcInput.classList.add('disabled');
-//     });
-// } else {
-//     phoneInputs.forEach(function (phoneInput) {
-//         phoneInput.classList.add('disabled');
-//     });
-//     pcInputs.forEach(function (pcInput) {
-//         pcInput.classList.remove('disabled');
-//     });
-// }
 
 const finePointer = window.matchMedia("(pointer: fine)");
 const coarsePointer = window.matchMedia("(pointer: coarse)");
@@ -47,3 +27,20 @@ pointerType();
 
 finePointer.addEventListener('change', pointerType);
 coarsePointer.addEventListener('change', pointerType);
+
+
+
+
+// Met behulp van chadGPT
+const dateInputs = document.querySelectorAll('.date-input');
+
+dateInputs.forEach((dateInput, index) => {
+    dateInput.addEventListener('input', function () {
+        if (dateInput.value.length === dateInput.maxLength) {
+            const nextInput = dateInputs[index + 1];
+            if (nextInput) {
+                nextInput.focus();
+            }
+        }
+    });
+});
