@@ -12,10 +12,10 @@
 
 
 form {
-    max-width: 800px;
-    margin: 2em auto;
-    background-color: var(--white);
-    padding: 2em 3em;
+  max-width: 800px;
+  margin: 2em auto;
+  background-color: var(--white);
+  padding: 2em 3em;
 }
 
 form fieldset:disabled {
@@ -27,140 +27,156 @@ form fieldset:disabled {
 /* ========================== */
 
 .number-letter {
-    display: flex;
-    flex-direction: column;
-    gap: 2em;
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.number-letter>legend {
+  width: 100%;
+  position: relative;
+  padding: 3em 0 1em 0;
+  margin-bottom: 2em;
+}
+
+.number-letter>legend::after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background-color: var(--bg-color);
+  bottom: 0;
+  left: 0;
+}
+
+
+/* ========================== */
+/* FIELDSET 1a */
+/* ========================== */
+
+.a--row-one,
+.a--row-two,
+.a--row-three {
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  gap: 1em;
+}
+
+/* row one */
+.a--row-one div {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.a--row-one div label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: .25em;
+}
+
+/* row three */
+.a--row-three div {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.a--row-three div label {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  gap: .25em;
+}
+
+
+/* ========================== */
+/* FIELDSET 1b */
+/* ========================== */
+
+/* disable feature -- hulp van Elton */
+/* .one-b:has(.skip:checked)>*:nth-of-type(n + 2) {
+  opacity: .3;
+  pointer-events: none;
+} */
+
+.b--row-one,
+.b--row-two,
+.b--row-three {
+  display: grid;
+  grid-template-columns: 50% 1fr;
+  gap: 1em;
+}
+
+.b--row-four {
+  display: grid;
+  grid-template-columns: 25% 1fr;
+  gap: 1em;
+}
+
+.b--row-one div,
+.b--row-two div,
+.b--row-three div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* row four */
+.b--row-four div {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.b--row-four div label {
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  gap: .25em;
+}
+
+
+/* ========================== */
+/* FIELDSET 1c */
+/* ========================== */
+
+.c--row-one,
+.c--row-two {
+  display: grid;
+  grid-template-columns: 50% 1fr;
+  gap: 1em;
+}
+
+.c--row-one div,
+.c--row-two div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ========================== */
+/* NEXT PAGE BUTTON */
+/* ========================== */
+
+.button-container {
+  width: max-content;
+  margin: 3em auto;
+}
+
+
+
+[id^="page-"] {
+  display: block;
+}
+
+@supports selector(:target) {
+  [id^="page-"] {
+    display: none;
   }
   
-  .number-letter>legend {
-    width: 100%;
-    position: relative;
-    padding: 3em 0 1em 0;
-    margin-bottom: 2em;
+  [id^="page-"]:target {
+    display: block;
   }
-  
-  .number-letter>legend::after {
-    content: '';
-    position: absolute;
-    height: 1px;
-    width: 100%;
-    background-color: var(--bg-color);
-    bottom: 0;
-    left: 0;
-  }
-  
-  
-  /* ========================== */
-  /* FIELDSET 1a */
-  /* ========================== */
-  
-  .a--row-one,
-  .a--row-two,
-  .a--row-three {
-    display: grid;
-    grid-template-columns: 25% 1fr;
-    gap: 1em;
-  }
-  
-  /* row one */
-  .a--row-one div {
-    display: flex;
-    align-items: center;
-    gap: 1em;
-  }
-  
-  .a--row-one div label {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: .25em;
-  }
-  
-  /* row three */
-  .a--row-three div {
-    display: flex;
-    align-items: center;
-    gap: 1em;
-  }
-  
-  .a--row-three div label {
-    display: flex;
-    flex-direction: column;
-    width: max-content;
-    gap: .25em;
-  }
-  
-  
-  /* ========================== */
-  /* FIELDSET 1b */
-  /* ========================== */
-  
-  /* disable feature -- hulp van Elton */
-  /* .one-b:has(.skip:checked)>*:nth-of-type(n + 2) {
-    opacity: .3;
-    pointer-events: none;
-  } */
-  
-  .b--row-one,
-  .b--row-two,
-  .b--row-three {
-    display: grid;
-    grid-template-columns: 50% 1fr;
-    gap: 1em;
-  }
-  
-  .b--row-four {
-    display: grid;
-    grid-template-columns: 25% 1fr;
-    gap: 1em;
-  }
-  
-  .b--row-one div,
-  .b--row-two div,
-  .b--row-three div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  /* row four */
-  .b--row-four div {
-    display: flex;
-    align-items: center;
-    gap: 1em;
-  }
-  
-  .b--row-four div label {
-    display: flex;
-    flex-direction: column;
-    width: max-content;
-    gap: .25em;
-  }
-  
-  
-  /* ========================== */
-  /* FIELDSET 1c */
-  /* ========================== */
-  
-  .c--row-one,
-  .c--row-two {
-    display: grid;
-    grid-template-columns: 50% 1fr;
-    gap: 1em;
-  }
-  
-  .c--row-one div,
-  .c--row-two div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-  }
-  
-  /* ========================== */
-  /* NEXT PAGE BUTTON */
-  /* ========================== */
-  
-  .button-container {
-    width: max-content;
-    margin: 3em auto;
-  }
+}
