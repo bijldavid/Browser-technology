@@ -12,6 +12,7 @@
 
 
 form {
+  position: relative;
   max-width: 800px;
   margin: 2em auto;
   background-color: var(--white);
@@ -20,6 +21,7 @@ form {
 
 form fieldset:disabled {
   opacity: .3;
+  filter: saturate(0);
 }
 
 /* ========================== */
@@ -63,13 +65,13 @@ form fieldset:disabled {
 }
 
 /* row one */
-.a--row-one div {
+.a--row-one>div {
   display: flex;
   align-items: center;
   gap: 1em;
 }
 
-.a--row-one div label {
+.a--row-one>div>label {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -77,13 +79,13 @@ form fieldset:disabled {
 }
 
 /* row three */
-.a--row-three div {
+.a--row-three>div {
   display: flex;
   align-items: center;
   gap: 1em;
 }
 
-.a--row-three div label {
+.a--row-three>div>label {
   display: flex;
   flex-direction: column;
   width: max-content;
@@ -115,22 +117,64 @@ form fieldset:disabled {
   gap: 1em;
 }
 
-.b--row-one div,
-.b--row-two div,
-.b--row-three div {
+.b--row-one>div,
+.b--row-two>div,
+.b--row-three>div {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: .5em;
 }
 
-/* row four */
-.b--row-four div {
+.b--row-one>div>label,
+.b--row-two>div>label,
+.b--row-three>div>label {
   display: flex;
   align-items: center;
   gap: 1em;
 }
 
-.b--row-four div label {
+.b--row-two div label:nth-of-type(2)>div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.upload-button label {
+  display: grid;
+  place-items: center;
+  width: max-content;
+  justify-self: end;
+  border-radius: 3px;
+  padding: 1em 3em;
+  background-color: var(--blue-100);
+  color: var(--white);
+  font-size: .75em;
+  box-shadow: inset 0 -2.5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.upload-button {
+  display: block;
+}
+
+@supports selector(:has(*)) {
+  form .one-b:not(:has(.expand:checked)) .upload-button {
+    display: none;
+  }
+
+  form .one-b:not(:has(.expand:checked)) .b--row-two div label:nth-of-type(2)>div {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* row four */
+.b--row-four>div {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.b--row-four>div>label {
   display: flex;
   flex-direction: column;
   width: max-content;
@@ -149,11 +193,19 @@ form fieldset:disabled {
   gap: 1em;
 }
 
-.c--row-one div,
-.c--row-two div {
+.c--row-one>div,
+.c--row-two>div {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  gap: .5em;
+}
+
+.c--row-one>div>label,
+.c--row-two>div>label {
+  display: flex;
+  align-items: center;
+  gap: 1em;
 }
 
 /* ========================== */
@@ -162,21 +214,5 @@ form fieldset:disabled {
 
 .button-container {
   width: max-content;
-  margin: 3em auto;
-}
-
-
-
-[id^="page-"] {
-  display: block;
-}
-
-@supports selector(:target) {
-  [id^="page-"] {
-    display: none;
-  }
-  
-  [id^="page-"]:target {
-    display: block;
-  }
+  margin: 7em auto 4em;
 }

@@ -23,12 +23,13 @@
 
         <form>
             <aside>
-                <a href="#page-one">1</a>
-                <a href="#page-two">2</a>
-                <a href="#page-three">3</a>
-                <a href="#page-four">4</a>
+                <div>
+                    <a href="#page-one">1</a>
+                    <a href="#page-two">2</a>
+                    <a href="#page-three">3</a>
+                    <a href="#page-four">4</a>
+                </div>
             </aside>
-
 
             <div id="page-one">
                 <!-- -=-=-=-=-=-=-=-=-=-=- 1a -=-=-=-=-=-=-=-=-=-=- -->
@@ -38,7 +39,7 @@
                     <!-- 1 -->
                     <fieldset class="a--row-one">
                         <span class="left-short">
-                            <legend>Naam</legend>
+                            <legend class="left-text">Naam</legend>
                         </span>
                         <div>
                             <label for="voornaam">Voornaam
@@ -60,39 +61,38 @@
                     <!-- 2 -->
                     <div class="a--row-two">
                         <span class="left-short">
-                            <label for="bsn-overledene">Burgerservicenummer overledene</label>
+                            <label for="bsn-overledene" class="left-text">Burgerservicenummer overledene</label>
                         </span>
-                        <input class="short-input" id="bsn-overledene" type="number" name="bsn"
-                            title="Alleen nummers gebruiken" minlength="9" maxlength="9" placeholder="123456782"
-                            required>
+                        <input class="short-input" id="bsn-overledene" type="text" name="bsn"
+                            title="Alleen nummers gebruiken" placeholder="123401238" pattern="[1-9][0-9]{8}" required>
                     </div>
 
                     <!-- 3 -->
                     <fieldset class="a--row-three">
                         <span class="left-short">
-                            <legend>Overlijdensdatum</legend>
+                            <legend class="left-text">Overlijdensdatum</legend>
                         </span>
                         <div class="fine">
                             <!-- fine ↓↓↓ -->
                             <label for="dag-od">Dag
                                 <input class="date-input" id="dag-od" type="text" name="overlijdensdatum"
                                     title="Vul een correcte datum in" placeholder="dd" minlength="2" maxlength="2"
-                                    required>
+                                    pattern="[0-9]" required>
                             </label>
                             <label for="maand-od">Maand
                                 <input class="date-input" id="maand-od" type="text" name="overlijdensdatum"
                                     title="Vul een correcte datum in" placeholder="mm" minlength="2" maxlength="2"
-                                    required>
+                                    pattern="[0-9]" required>
                             </label>
                             <label for="jaar-od">Jaar
                                 <input class="date-input" id="jaar-od" type="text" name="overlijdensdatum"
                                     title="Vul een correcte datum in" placeholder="jjjj" minlength="4" maxlength="4"
-                                    required>
+                                    pattern="[0-9]" required>
                             </label>
                         </div>
                         <!-- coarse ↓↓↓ -->
                         <input class="coarse" type="date" name="overlijdensdatum" title="Vul een correcte datum in"
-                            inputmode="numeric">
+                            inputmode="numeric" min="2024-09-06" max="2025-03-06">
                     </fieldset>
 
 
@@ -105,9 +105,8 @@
                     <!-- 1 -->
                     <fieldset class="b--row-one">
                         <span class="left-long">
-                            <legend>Was de overledene getrouwd of had de overledene een geregistreerd partner op het
-                                moment
-                                van overlijden?</legend>
+                            <legend class="left-text">Was de overledene getrouwd of had de overledene een geregistreerd
+                                partner op het moment van overlijden?</legend>
                         </span>
                         <div>
                             <label>
@@ -124,7 +123,8 @@
                     <!-- 2 -->
                     <fieldset class="b--row-two skipped">
                         <span class="left-long">
-                            <legend>Hadden de overledene en diens echtgenoot of geregistreerd partner huwelijkse of
+                            <legend class="left-text">Hadden de overledene en diens echtgenoot of geregistreerd partner
+                                huwelijkse of
                                 partnerschaps-voorwaarden laten vastleggen in een notariële
                                 akte?</legend>
                         </span>
@@ -135,9 +135,13 @@
                             </label>
                             <label>
                                 <input class="expand" type="radio" name="huwelijkse_voorwaarden" value="ja">
-                                Ja. Stuur een kopie van de akte mee met de aangifte.
-                                <input class="upload" type="file" id="avatar" name="avatar"
-                                    accept="image/png, image/jpeg" />
+                                <div class="problem">
+                                    Ja. Stuur een kopie van de akte mee met de aangifte.
+                                    <div class="upload-button">
+                                        <input type="file" id="file-upload" name="file-upload">
+                                        <label for="file-upload">Kies bestand</label>
+                                    </div>
+                                </div>
                             </label>
                         </div>
                     </fieldset>
@@ -145,7 +149,8 @@
                     <!-- 3 -->
                     <fieldset class="b--row-three skipped">
                         <span class="left-long">
-                            <legend>Hadden de overledene en diens partner een finaal verrekenbeding?</legend>
+                            <legend class="left-text">Hadden de overledene en diens partner een finaal verrekenbeding?
+                            </legend>
                         </span>
                         <div>
                             <label>
@@ -162,21 +167,21 @@
                     <!-- 4 -->
                     <fieldset class="b--row-four skipped">
                         <span class="left-long">
-                            <legend>Datum huwelijkse of partnerschapsvoorwaarden</legend>
+                            <legend class="left-text">Datum huwelijkse of partnerschapsvoorwaarden</legend>
                         </span>
                         <div class="fine">
                             <!-- fine ↓↓↓ -->
                             <label for="dag-hop">Dag
                                 <input class="date-input" id="dag-hop" type="text" name="datum hop"
-                                    title="Vul een correcte datum in" placeholder="dd" required>
+                                    title="Vul een correcte datum in" placeholder="dd" pattern="[0-9]" required>
                             </label>
                             <label for="maand-hop">Maand
                                 <input class="date-input" id="maand-hop" type="text" name="datum hop"
-                                    title="Vul een correcte datum in" placeholder="mm" required>
+                                    title="Vul een correcte datum in" placeholder="mm" pattern="[0-9]" required>
                             </label>
                             <label for="jaar-hop">Jaar
                                 <input class="date-input" id="jaar-hop" type="text" name="datum hop"
-                                    title="Vul een correcte datum in" placeholder="jjjj" required>
+                                    title="Vul een correcte datum in" placeholder="jjjj" pattern="[0-9]" required>
                             </label>
                         </div>
                         <!-- coarse ↓↓↓ -->
@@ -196,7 +201,7 @@
                     <!-- 1 -->
                     <fieldset class="c--row-one" data-legend="Had de overledene kinderen?">
                         <span class="left-long">
-                            <legend>Had de overledene kinderen?</legend>
+                            <legend class="left-text">Had de overledene kinderen?</legend>
                         </span>
                         <div>
                             <label>
@@ -213,7 +218,8 @@
                     <!-- 2 -->
                     <fieldset class="c--row-two">
                         <span class="left-long">
-                            <legend>Is 1 van deze kinderen eerder overleden dan de overledene voor wie u nu aangifte
+                            <legend class="left-text">Is 1 van deze kinderen eerder overleden dan de overledene voor wie
+                                u nu aangifte
                                 doet?.
                             </legend>
                         </span>
