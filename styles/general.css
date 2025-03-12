@@ -70,6 +70,16 @@ img {
   width: 100%;
 }
 
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 
 /* ========================== */
 /* GENERAL STYLING */
@@ -77,10 +87,6 @@ img {
 
 body {
   background-color: var(--bg-color);
-}
-
-.disabled {
-  display: none !important;
 }
 
 button {
@@ -98,12 +104,15 @@ button:active {
 }
 
 .upload {
-  display: none;
-}
-
-form .one-b:has(.expand:checked) .upload {
   display: block;
 }
+
+@supports selector(:has(*)) {
+  form .one-b:not(:has(.expand:checked)) .upload {
+    display: none;
+  }
+}
+
 
 fieldset {
   border: none;
@@ -193,4 +202,21 @@ header:nth-of-type(2) {
 header img {
   height: 100%;
   width: auto;
+}
+
+
+/* ========================== */
+/* ASIDE */
+/* ========================== */
+
+main {
+  position: relative;
+  /* padding-inline: 4em; */
+}
+
+aside {
+  position: absolute;
+  top: 0;
+  left: calc(100vw / 2);
+  /* left: 12em; */
 }

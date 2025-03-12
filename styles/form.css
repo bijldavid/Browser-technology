@@ -1,3 +1,16 @@
+@media (pointer: fine) {
+  .coarse {
+    display: none !important;
+  }
+}
+
+@media (pointer: coarse) {
+  .fine {
+    display: none !important;
+  }
+}
+
+
 form {
     max-width: 800px;
     margin: 2em auto;
@@ -5,6 +18,11 @@ form {
     padding: 2em 3em;
 }
 
+form fieldset:disabled {
+  opacity: .3;
+}
+
+.page-one
 
 /* ========================== */
 /* GENERAL FIELDSETS */
@@ -79,11 +97,11 @@ form {
   /* FIELDSET 1b */
   /* ========================== */
   
-  /* disable feature */
-  .one-b:has(.skip:checked)>*:nth-of-type(n + 2) {
+  /* disable feature -- hulp van Elton */
+  /* .one-b:has(.skip:checked)>*:nth-of-type(n + 2) {
     opacity: .3;
     pointer-events: none;
-  }
+  } */
   
   .b--row-one,
   .b--row-two,

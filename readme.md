@@ -91,6 +91,4 @@ Uiteindelijk heb ik ervoor gekozen om de <code>legend</code>-elementen te wrappe
     <li>https://www.w3schools.com/html/html_form_input_types.asp -> een lijst van alle input types</li>
 </ul>
 
-
-
 ---
