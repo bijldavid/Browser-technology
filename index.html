@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,9 +7,8 @@
     <link rel="stylesheet" href="styles/fonts.css">
     <link rel="stylesheet" href="styles/general.css">
     <link rel="stylesheet" href="styles/form.css">
-    <title>NS belasting formulier</title>
+    <title>Document</title>
 </head>
-
 <body>
     <header><img src="images/error-symbol2.svg">
         <p>Dit is een school project!!!</p>
@@ -19,246 +17,13 @@
         <img src="images/Logo_NS.svg" alt="#">
     </header>
     <main>
-
-
-        <form>
-            <aside>
-                <div>
-                    <a href="#page-one">1</a>
-                    <a href="#page-two">2</a>
-                    <a href="#page-three">3</a>
-                    <a href="#page-four">4</a>
-                </div>
-            </aside>
-
-            <div id="page-one">
-                <!-- -=-=-=-=-=-=-=-=-=-=- 1a -=-=-=-=-=-=-=-=-=-=- -->
-                <fieldset class="number-letter one-a">
-                    <legend>1a</legend>
-
-                    <!-- 1 -->
-                    <fieldset class="a--row-one">
-                        <span class="left-short">
-                            <legend class="left-text">Naam</legend>
-                        </span>
-                        <div>
-                            <label for="voornaam">Voornaam
-                                <input type="text" id="voornaam" name="voornaam" pattern="[A-Za-zÀ-ÿ\s]+"
-                                    title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. David" pattern="^[a-zA-Z ]*$
-                                    " required>
-                            </label>
-                            <label for="tussenvoegsels">Tussenvoegsels
-                                <input type="text" id="tussenvoegsels" name="tussenvoegsels" pattern="[A-Za-zÀ-ÿ\s]+"
-                                    title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. van den" required>
-                            </label>
-                            <label for="achternaam">Achternaam
-                                <input type="text" id="achternaam" name="achternaam" pattern="[A-Za-zÀ-ÿ\s]+"
-                                    title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. Bijl" required>
-                            </label>
-                        </div>
-                    </fieldset>
-
-                    <!-- 2 -->
-                    <div class="a--row-two">
-                        <span class="left-short">
-                            <label for="bsn-overledene" class="left-text">Burgerservicenummer overledene</label>
-                        </span>
-                        <input class="short-input" id="bsn-overledene" type="text" name="bsn"
-                            title="Alleen nummers gebruiken" placeholder="123401238" pattern="[1-9][0-9]{8}" required>
-                    </div>
-
-                    <!-- 3 -->
-                    <fieldset class="a--row-three">
-                        <span class="left-short">
-                            <legend class="left-text">Overlijdensdatum</legend>
-                        </span>
-                        <div class="fine">
-                            <!-- fine ↓↓↓ -->
-                            <label for="dag-od">Dag
-                                <input class="date-input" id="dag-od" type="text" name="overlijdensdatum"
-                                    title="Vul een correcte datum in" placeholder="dd" minlength="2" maxlength="2"
-                                    pattern="[0-9]" required>
-                            </label>
-                            <label for="maand-od">Maand
-                                <input class="date-input" id="maand-od" type="text" name="overlijdensdatum"
-                                    title="Vul een correcte datum in" placeholder="mm" minlength="2" maxlength="2"
-                                    pattern="[0-9]" required>
-                            </label>
-                            <label for="jaar-od">Jaar
-                                <input class="date-input" id="jaar-od" type="text" name="overlijdensdatum"
-                                    title="Vul een correcte datum in" placeholder="jjjj" minlength="4" maxlength="4"
-                                    pattern="[0-9]" required>
-                            </label>
-                        </div>
-                        <!-- coarse ↓↓↓ -->
-                        <input class="coarse" type="date" name="overlijdensdatum" title="Vul een correcte datum in"
-                            inputmode="numeric" min="2024-09-06" max="2025-03-06">
-                    </fieldset>
-
-
-                </fieldset>
-
-                <!-- -=-=-=-=-=-=-=-=-=-=- 1b -=-=-=-=-=-=-=-=-=-=- -->
-                <fieldset class="number-letter one-b">
-                    <legend>1b</legend>
-
-                    <!-- 1 -->
-                    <fieldset class="b--row-one">
-                        <span class="left-long">
-                            <legend class="left-text">Was de overledene getrouwd of had de overledene een geregistreerd
-                                partner op het moment van overlijden?</legend>
-                        </span>
-                        <div>
-                            <label>
-                                <input class="skip" type="radio" name="burgerlijke_staat" value="nee" required> Nee. Ga
-                                verder met vraag 1c.
-                            </label>
-                            <label>
-                                <input class="skip" type="radio" name="burgerlijke_staat" value="ja">
-                                Ja
-                            </label>
-                        </div>
-                    </fieldset>
-
-                    <!-- 2 -->
-                    <fieldset class="b--row-two skipped">
-                        <span class="left-long">
-                            <legend class="left-text">Hadden de overledene en diens echtgenoot of geregistreerd partner
-                                huwelijkse of
-                                partnerschaps-voorwaarden laten vastleggen in een notariële
-                                akte?</legend>
-                        </span>
-                        <div>
-                            <label>
-                                <input type="radio" name="huwelijkse_voorwaarden" value="nee" required>
-                                Nee
-                            </label>
-                            <label>
-                                <input class="expand" type="radio" name="huwelijkse_voorwaarden" value="ja">
-                                <div class="problem">
-                                    Ja. Stuur een kopie van de akte mee met de aangifte.
-                                    <div class="upload-button">
-                                        <input type="file" id="file-upload" name="file-upload">
-                                        <label for="file-upload">Kies bestand</label>
-                                    </div>
-                                </div>
-                            </label>
-                        </div>
-                    </fieldset>
-
-                    <!-- 3 -->
-                    <fieldset class="b--row-three skipped">
-                        <span class="left-long">
-                            <legend class="left-text">Hadden de overledene en diens partner een finaal verrekenbeding?
-                            </legend>
-                        </span>
-                        <div>
-                            <label>
-                                <input type="radio" name="finaal_verrekenbeding" value="nee" required>
-                                Nee
-                            </label>
-                            <label>
-                                <input type="radio" name="finaal_verrekenbeding" value="ja">
-                                Ja
-                            </label>
-                        </div>
-                    </fieldset>
-
-                    <!-- 4 -->
-                    <fieldset class="b--row-four skipped">
-                        <span class="left-long">
-                            <legend class="left-text">Datum huwelijkse of partnerschapsvoorwaarden</legend>
-                        </span>
-                        <div class="fine">
-                            <!-- fine ↓↓↓ -->
-                            <label for="dag-hop">Dag
-                                <input class="date-input" id="dag-hop" type="text" name="datum hop"
-                                    title="Vul een correcte datum in" placeholder="dd" pattern="[0-9]" required>
-                            </label>
-                            <label for="maand-hop">Maand
-                                <input class="date-input" id="maand-hop" type="text" name="datum hop"
-                                    title="Vul een correcte datum in" placeholder="mm" pattern="[0-9]" required>
-                            </label>
-                            <label for="jaar-hop">Jaar
-                                <input class="date-input" id="jaar-hop" type="text" name="datum hop"
-                                    title="Vul een correcte datum in" placeholder="jjjj" pattern="[0-9]" required>
-                            </label>
-                        </div>
-                        <!-- coarse ↓↓↓ -->
-                        <input class="coarse" type="date" name="datum hop" title="Vul een correcte datum in"
-                            inputmode="numeric">
-                    </fieldset>
-
-
-                </fieldset>
-
-
-
-                <!-- -=-=-=-=-=-=-=-=-=-=- 1c -=-=-=-=-=-=-=-=-=-=- -->
-                <fieldset class="number-letter one-c">
-                    <legend>1c</legend>
-
-                    <!-- 1 -->
-                    <fieldset class="c--row-one" data-legend="Had de overledene kinderen?">
-                        <span class="left-long">
-                            <legend class="left-text">Had de overledene kinderen?</legend>
-                        </span>
-                        <div>
-                            <label>
-                                <input type="radio" name="overleden kinderen" value="nee" required>
-                                Nee. Ga verder met vraag 1d.
-                            </label>
-                            <label>
-                                <input type="radio" name="overleden kinderen" value="ja">
-                                Ja
-                            </label>
-                        </div>
-                    </fieldset>
-
-                    <!-- 2 -->
-                    <fieldset class="c--row-two">
-                        <span class="left-long">
-                            <legend class="left-text">Is 1 van deze kinderen eerder overleden dan de overledene voor wie
-                                u nu aangifte
-                                doet?.
-                            </legend>
-                        </span>
-                        <div>
-                            <label>
-                                <input type="radio" name="eerder overleden" value="nee" required>
-                                Nee. Ga verder met vraag 1d.
-                            </label>
-                            <label>
-                                <input type="radio" name="eerder overleden" value="ja">
-                                Ja
-                            </label>
-                        </div>
-                    </fieldset>
-
-                </fieldset>
-
-                <div class="button-container">
-                    <a href="#page-two">Volgende pagina</a>
-                </div>
-            </div>
-
-            <div id="page-two">
-                <p>Page 2</p>
-            </div>
-
-            <div id="page-three">
-                <p>Page 3</p>
-            </div>
-
-            <div id="page-four">
-                <p>Page 4</p>
-            </div>
-        </form>
+        <section>
+            <h1>Start pagina</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatibus et est nam recusandae sit accusantium, inventore ipsam laborum commodi consequatur tenetur, soluta praesentium. Eveniet perferendis obcaecati non fuga, ab sit?</p>
+            <a href="form.html#page-one">Klik hier</a>
+        </section>
 
     </main>
-    <footer></footer>
-
     <script src="scripts/index.js"></script>
 </body>
-
 </html>

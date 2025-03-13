@@ -19,11 +19,6 @@ form {
   padding: 2em 3em;
 }
 
-form fieldset:disabled {
-  opacity: .3;
-  filter: saturate(0);
-}
-
 /* ========================== */
 /* GENERAL FIELDSETS */
 /* ========================== */
@@ -56,22 +51,22 @@ form fieldset:disabled {
 /* FIELDSET 1a */
 /* ========================== */
 
-.a--row-one,
-.a--row-two,
-.a--row-three {
+.one-a--row-one,
+.one-a--row-two,
+.one-a--row-three {
   display: grid;
   grid-template-columns: 25% 1fr;
   gap: 1em;
 }
 
 /* row one */
-.a--row-one>div {
+.one-a--row-one>div {
   display: flex;
   align-items: center;
   gap: 1em;
 }
 
-.a--row-one>div>label {
+.one-a--row-one>div>label {
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -79,13 +74,13 @@ form fieldset:disabled {
 }
 
 /* row three */
-.a--row-three>div {
+.one-a--row-three>div {
   display: flex;
   align-items: center;
   gap: 1em;
 }
 
-.a--row-three>div>label {
+.one-a--row-three>div>label {
   display: flex;
   flex-direction: column;
   width: max-content;
@@ -103,38 +98,38 @@ form fieldset:disabled {
   pointer-events: none;
 } */
 
-.b--row-one,
-.b--row-two,
-.b--row-three {
+.one-b--row-one,
+.one-b--row-two,
+.one-b--row-three {
   display: grid;
   grid-template-columns: 50% 1fr;
   gap: 1em;
 }
 
-.b--row-four {
+.one-b--row-four {
   display: grid;
   grid-template-columns: 25% 1fr;
   gap: 1em;
 }
 
-.b--row-one>div,
-.b--row-two>div,
-.b--row-three>div {
+.one-b--row-one>div,
+.one-b--row-two>div,
+.one-b--row-three>div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: .5em;
 }
 
-.b--row-one>div>label,
-.b--row-two>div>label,
-.b--row-three>div>label {
+.one-b--row-one>div>label,
+.one-b--row-two>div>label,
+.one-b--row-three>div>label {
   display: flex;
   align-items: center;
   gap: 1em;
 }
 
-.b--row-two div label:nth-of-type(2)>div {
+.one-b--row-two div label:nth-of-type(2)>div {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
@@ -168,13 +163,13 @@ form fieldset:disabled {
 
 
 /* row four */
-.b--row-four>div {
+.one-b--row-four>div {
   display: flex;
   align-items: center;
   gap: 1em;
 }
 
-.b--row-four>div>label {
+.one-b--row-four>div>label {
   display: flex;
   flex-direction: column;
   width: max-content;
@@ -186,23 +181,23 @@ form fieldset:disabled {
 /* FIELDSET 1c */
 /* ========================== */
 
-.c--row-one,
-.c--row-two {
+.one-c--row-one,
+.one-c--row-two {
   display: grid;
   grid-template-columns: 50% 1fr;
   gap: 1em;
 }
 
-.c--row-one>div,
-.c--row-two>div {
+.one-c--row-one>div,
+.one-c--row-two>div {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: .5em;
 }
 
-.c--row-one>div>label,
-.c--row-two>div>label {
+.one-c--row-one>div>label,
+.one-c--row-two>div>label {
   display: flex;
   align-items: center;
   gap: 1em;
@@ -215,4 +210,37 @@ form fieldset:disabled {
 .button-container {
   width: max-content;
   margin: 7em auto 4em;
+}
+
+
+/* ========================== */
+/* FIELDSET 2a */
+/* ========================== */
+
+.two-a--row-one {
+  display: grid;
+  grid-template-columns: 50% 1fr;
+  gap: 1em;
+}
+
+
+/* row one */
+.two-a--row-one>div {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* doesnt work sad */
+/* .two-a--row-one>div:has(input:not(:placeholder-shown)) input:placeholder-shown {
+  opacity: .3;
+  pointer-events: none;
+  filter: saturate(0)
+} */
+
+.two-a--row-one>div>label {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: .25em;
 }

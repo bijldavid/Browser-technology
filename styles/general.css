@@ -124,6 +124,10 @@ input[type="radio"] {
   accent-color: var(--correct);
 }
 
+a:active {
+  translate: 0 1px;
+}
+
 /* ========================== */
 /* GENERAL STYLING */
 /* ========================== */
@@ -133,7 +137,7 @@ body {
 }
 
 /* bottom button */
-#page-one a  {
+#page-one a {
   border-radius: 3px;
   padding: 1em 4em;
   background-color: var(--blue-100);
@@ -183,6 +187,10 @@ input::placeholder {
   max-width: 5em;
 }
 
+*:disabled {
+  opacity: .3;
+  filter: saturate(0);
+}
 
 .left-short {
   display: flex;
@@ -270,6 +278,10 @@ aside a {
   box-shadow: inset 0 -2.5px 0 rgba(0, 0, 0, 0.3);
 }
 
+[id^="page-"] {
+  scroll-margin: 500px;
+}
+
 
 [id^="page-"] {
   display: block;
@@ -282,5 +294,10 @@ aside a {
 
   [id^="page-"]:target {
     display: block;
+  }
+
+  /* credit: Vivanne */
+  body:not(:has([id^=step]:target)) #step1 {
+    display: grid;
   }
 }
