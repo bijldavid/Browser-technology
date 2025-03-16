@@ -43,17 +43,16 @@
                         </span>
                         <div>
                             <label for="voornaam">Voornaam
-                                <input type="text" id="voornaam" name="voornaam" pattern="[A-Za-zÀ-ÿ\s]+"
-                                    title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. David" pattern="^[a-zA-Z ]*$
-                                    " required>
+                                <input type="text" id="voornaam" name="voornaam" title="Alleen letters gebruiken"
+                                    maxlength="50" placeholder="e.g. David" " required>
                             </label>
-                            <label for="tussenvoegsels">Tussenvoegsels
-                                <input type="text" id="tussenvoegsels" name="tussenvoegsels" pattern="[A-Za-zÀ-ÿ\s]+"
-                                    title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. van den" required>
+                            <label for=" tussenvoegsels">Tussenvoegsels
+                                <input type="text" id="tussenvoegsels" name="tussenvoegsels"
+                                    title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. van den">
                             </label>
                             <label for="achternaam">Achternaam
-                                <input type="text" id="achternaam" name="achternaam" pattern="[A-Za-zÀ-ÿ\s]+"
-                                    title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. Bijl" required>
+                                <input type="text" id="achternaam" name="achternaam" title="Alleen letters gebruiken"
+                                    maxlength="50" placeholder="e.g. Bijl" required>
                             </label>
                         </div>
                     </fieldset>
@@ -77,22 +76,22 @@
                             <label for="dag-od">Dag
                                 <input class="date-input" id="dag-od" type="text" name="overlijdensdatum"
                                     title="Vul een correcte datum in" placeholder="dd" minlength="2" maxlength="2"
-                                    pattern="[0-9]" required>
+                                    pattern="[0-9][0-9]" required>
                             </label>
                             <label for="maand-od">Maand
                                 <input class="date-input" id="maand-od" type="text" name="overlijdensdatum"
                                     title="Vul een correcte datum in" placeholder="mm" minlength="2" maxlength="2"
-                                    pattern="[0-9]" required>
+                                    pattern="[0-9][0-9]" required>
                             </label>
                             <label for="jaar-od">Jaar
                                 <input class="date-input" id="jaar-od" type="text" name="overlijdensdatum"
                                     title="Vul een correcte datum in" placeholder="jjjj" minlength="4" maxlength="4"
-                                    pattern="[0-9]" required>
+                                    pattern="[0-9][0-9][0-9][0-9]" required>
                             </label>
                         </div>
                         <!-- coarse ↓↓↓ -->
                         <input class="coarse" type="date" name="overlijdensdatum" title="Vul een correcte datum in"
-                            inputmode="numeric" min="2024-09-06" max="2025-03-06">
+                            inputmode="numeric" min="1900-09-06" max="2025-03-06">
                     </fieldset>
 
 
@@ -135,7 +134,7 @@
                             </label>
                             <label>
                                 <input class="expand" type="radio" name="huwelijkse_voorwaarden" value="ja">
-                                <div class="problem">
+                                <div>
                                     Ja. Stuur een kopie van de akte mee met de aangifte.
                                     <div class="upload-button">
                                         <input type="file" id="file-upload" name="file-upload">
@@ -238,7 +237,7 @@
                 </fieldset>
 
                 <div class="button-container">
-                    <a id="volgende" href="#page-two">Volgende pagina</a>
+                    <a id="volgende" href="#page-two">Volgende stap</a>
                 </div>
             </div>
 

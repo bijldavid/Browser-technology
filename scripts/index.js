@@ -1,32 +1,24 @@
+// generated code
 function resetEmptyInputValidation() {
-    // Get all input elements on the page
     const allInputs = document.querySelectorAll('input');
-    
-    // Loop through each input
+
     allInputs.forEach(input => {
-        // Check if the input is empty
         if (input.value.trim() === '') {
-            // For empty inputs, add a class that will be styled in CSS
             input.classList.add('empty-input');
         } else {
-            // For non-empty inputs, remove the class
             input.classList.remove('empty-input');
         }
     });
 }
 
-// Add the CSS that will override only the validation styles
 const style = document.createElement('style');
-style.textContent = `
-    input.empty-input:user-valid,
-    input.empty-input:user-invalid {
-        border-left: 1px solid #ccc !important;
-        background-image: none !important;
-    }
-`;
-document.head.appendChild(style);
+style.textContent = `input.empty-input:user-valid,
+                    input.empty-input:user-invalid {
+                    border-left: 1px solid #ccc !important;
+                    background-image: none !important;
+                    }`;
 
-// Run the function when a user interacts with any input
+document.head.appendChild(style);
 document.addEventListener('input', resetEmptyInputValidation);
 
 
@@ -34,7 +26,6 @@ document.addEventListener('input', resetEmptyInputValidation);
 
 
 
-// chadgpt
 let radioButtons = document.querySelectorAll('.one-b .skip');
 
 radioButtons.forEach(function (radio) {
@@ -52,7 +43,6 @@ radioButtons.forEach(function (radio) {
     });
 });
 
-// chadgpt
 const kiesInputs = document.querySelectorAll('.two-a .skip');
 
 kiesInputs.forEach(kiesinput => {
