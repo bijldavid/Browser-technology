@@ -16,7 +16,8 @@
   --black-100: #CDCDD3;
 
   --white: #fff;
-  --bg-color: #E6E6E8;
+  --bg-color-100: #E6E6E8;
+  --bg-color-200: #e6e6e844;
 
   /* fonts */
   --heavy: 900;
@@ -62,6 +63,10 @@ input[type="file"] {
 }
 
 fieldset {
+  border: none;
+}
+
+button {
   border: none;
 }
 
@@ -163,7 +168,7 @@ input[type="radio"] {
   accent-color: var(--correct);
 }
 
-a:active {
+a:active, button:active {
   translate: 0 1px;
 }
 
@@ -177,8 +182,10 @@ a:active {
 }
 
 *:disabled {
-  opacity: .3;
-  filter: saturate(0);
+  opacity: .3 !important;
+  filter: saturate(0) !important;
+  cursor: default !important;
+  translate: 0 0 !important; 
 }
 
 

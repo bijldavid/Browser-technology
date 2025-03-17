@@ -7,7 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/fonts.css">
     <link rel="stylesheet" href="styles/general.css">
-    <link rel="stylesheet" href="styles/form.css">
+    <link rel="stylesheet" href="styles/form-narrow.css">
+    <link rel="stylesheet" href="styles/form-wide.css">
     <title>NS belasting formulier</title>
 </head>
 
@@ -39,12 +40,12 @@
                     <!-- 1 -->
                     <fieldset class="one-a--row-one">
                         <span class="left-short">
-                            <legend class="left-text">Naam</legend>
+                            <legend class="blue-text">Naam</legend>
                         </span>
                         <div>
                             <label for="voornaam">Voornaam
                                 <input type="text" id="voornaam" name="voornaam" title="Alleen letters gebruiken"
-                                    maxlength="50" placeholder="e.g. David" " required>
+                                    maxlength="50" placeholder="e.g. David" required>
                             </label>
                             <label for=" tussenvoegsels">Tussenvoegsels
                                 <input type="text" id="tussenvoegsels" name="tussenvoegsels"
@@ -60,16 +61,16 @@
                     <!-- 2 -->
                     <div class="one-a--row-two">
                         <span class="left-short">
-                            <label for="bsn-overledene" class="left-text">Burgerservicenummer overledene</label>
+                            <label for="bsn-overledene" class="blue-text">Burgerservicenummer overledene</label>
                         </span>
                         <input class="short-input" id="bsn-overledene" type="text" name="bsn"
-                            title="Alleen nummers gebruiken" placeholder="123401238" pattern="[1-9][0-9]{8}" required>
+                            title="Alleen nummers gebruiken" placeholder="123401234" pattern="[1-9][0-9]{8}" required>
                     </div>
 
                     <!-- 3 -->
                     <fieldset class="one-a--row-three">
                         <span class="left-short">
-                            <legend class="left-text">Overlijdensdatum</legend>
+                            <legend class="blue-text">Overlijdensdatum</legend>
                         </span>
                         <div class="fine">
                             <!-- fine ↓↓↓ -->
@@ -104,16 +105,16 @@
                     <!-- 1 -->
                     <fieldset class="one-b--row-one">
                         <span class="left-long">
-                            <legend class="left-text">Was de overledene getrouwd of had de overledene een geregistreerd
+                            <legend class="blue-text">Was de overledene getrouwd of had de overledene een geregistreerd
                                 partner op het moment van overlijden?</legend>
                         </span>
                         <div>
                             <label>
-                                <input class="skip" type="radio" name="burgerlijke_staat" value="nee" required> Nee. Ga
+                                <input class="skip" type="radio" name="burgerlijke_staat" required> Nee. Ga
                                 verder met vraag 1c.
                             </label>
                             <label>
-                                <input class="skip" type="radio" name="burgerlijke_staat" value="ja">
+                                <input type="radio" name="burgerlijke_staat">
                                 Ja
                             </label>
                         </div>
@@ -122,7 +123,7 @@
                     <!-- 2 -->
                     <fieldset class="one-b--row-two skipped">
                         <span class="left-long">
-                            <legend class="left-text">Hadden de overledene en diens echtgenoot of geregistreerd partner
+                            <legend class="blue-text">Hadden de overledene en diens echtgenoot of geregistreerd partner
                                 huwelijkse of
                                 partnerschaps-voorwaarden laten vastleggen in een notariële
                                 akte?</legend>
@@ -148,7 +149,7 @@
                     <!-- 3 -->
                     <fieldset class="one-b--row-three skipped">
                         <span class="left-long">
-                            <legend class="left-text">Hadden de overledene en diens partner een finaal verrekenbeding?
+                            <legend class="blue-text">Hadden de overledene en diens partner een finaal verrekenbeding?
                             </legend>
                         </span>
                         <div>
@@ -166,7 +167,7 @@
                     <!-- 4 -->
                     <fieldset class="one-b--row-four skipped">
                         <span class="left-long">
-                            <legend class="left-text">Datum huwelijkse of partnerschapsvoorwaarden</legend>
+                            <legend class="blue-text">Datum huwelijkse of partnerschapsvoorwaarden</legend>
                         </span>
                         <div class="fine">
                             <!-- fine ↓↓↓ -->
@@ -200,7 +201,7 @@
                     <!-- 1 -->
                     <fieldset class="one-c--row-one" data-legend="Had de overledene kinderen?">
                         <span class="left-long">
-                            <legend class="left-text">Had de overledene kinderen?</legend>
+                            <legend class="blue-text">Had de overledene kinderen?</legend>
                         </span>
                         <div>
                             <label>
@@ -217,7 +218,7 @@
                     <!-- 2 -->
                     <fieldset class="one-c--row-two">
                         <span class="left-long">
-                            <legend class="left-text">Is 1 van deze kinderen eerder overleden dan de overledene voor wie
+                            <legend class="blue-text">Is 1 van deze kinderen eerder overleden dan de overledene voor wie
                                 u nu aangifte
                                 doet?.
                             </legend>
@@ -256,7 +257,7 @@
                     <!-- 1 -->
                     <fieldset class="two-a--row-one">
                         <span class="left-long">
-                            <legend class="left-text">Vul 1 van de 3 in: het burgerservicenummer of RSIN van de
+                            <legend class="blue-text">Vul 1 van de 3 in: het burgerservicenummer of RSIN van de
                                 gemachtigde, het beconnummer van de adviseur of het protocolnummer van de notaris.
                             </legend>
                         </span>
@@ -278,7 +279,372 @@
             </div>
 
             <div id="page-three">
-                <p>Page 3</p>
+                <!-- -=-=-=-=-=-=-=-=-=-=- 3a -=-=-=-=-=-=-=-=-=-=- -->
+                <fieldset class="number-letter three-a">
+                    <legend>3a</legend>
+
+                    <!-- 1 -->
+                    <fieldset class="three-a--row-one">
+                        <span class="left-long">
+                            <legend class="blue-text">Heeft de overledene in het testament een executeur aangewezen om
+                                de erfenis af te handelen? Dan moet de executeur aangifte doen voor alle personen en/of
+                                instellingen die iets krijgen uit de nalatenschap (verkrijgers).
+                            </legend>
+                        </span>
+                        <div>
+                            <label>
+                                <input type="radio" name="executeur aangewezen" required>
+                                Nee, er is geen executeur aangewezen.
+                            </label>
+                            <label>
+                                <input class="skip" type="radio" name="executeur aangewezen">
+                                Ik ben executeur en doe aangifte voor alle personen en/of instellingen die
+                                iets krijgen uit de nalatenschap (verkrijgers). Geef aan voor hoeveel verkrijgers u
+                                aangifte doet. Bent u zelf ook verkrijger? Tel uzelf dan ook mee.
+                            </label>
+                        </div>
+
+                        <fieldset disabled class="skipped">
+                            <span>
+                                <legend class="blue-text">Is er geen executeur aangewezen? Kruis dan aan welke situatie
+                                    voor u geldt.</legend>
+                            </span>
+                            <div>
+                                <label>
+                                    <input type="radio" name="geen executeur aangewezen">
+                                    Ik ben erfgenaam en ben gemachtigd om aangifte te doen voor meerdere
+                                    personen en/of instellingen die iets krijgen uit de nalatenschap (verkrijgers).
+                                    Geef aan voor hoeveel verkrijgers u aangifte doet. Tel uzelf ook mee.
+                                </label>
+                                <label>
+                                    <input type="radio" name="geen executeur aangewezen">
+                                    Ik ben erfgenaam en doe samen met andere erfgenamen aangifte.
+                                    Geef het aantal personen en/of instellingen aan die iets krijgen uit de nalatenschap
+                                    (verkrijgers). Tel uzelf ook mee.
+                                </label>
+                                <label>
+                                    <input id="alleen" type="radio" name="geen executeur aangewezen">
+                                    Ik ben erfgenaam en doe alleen aangifte voor mijzelf.
+                                </label>
+                                <label>
+                                    <input type="radio" name="geen executeur aangewezen">
+                                    Ik ben geen erfgenaam, maar ben gemachtigd om aangifte te doen. Geef aan voor
+                                    hoeveel verkrijgers u aangifte doet.
+                                </label>
+                            </div>
+                        </fieldset>
+                    </fieldset>
+
+                    <div>
+                        <section>
+                            <h2>Verkrijger 1</h2>
+                            <div>
+                                <button type="button">+</button>
+                                <button type="button">-</button>
+                            </div>
+                        </section>
+                        <!-- 2 -->
+                        <fieldset class="three-a--row-two">
+                            <span class="left-short">
+                                <legend class="blue-text">Naam</legend>
+                            </span>
+                            <div>
+                                <label for="voornaam">Voornaam
+                                    <input type="text" id="voornaam" name="voornaam" title="Alleen letters gebruiken"
+                                        maxlength="50" placeholder="e.g. David" required>
+                                </label>
+                                <label for=" tussenvoegsels">Tussenvoegsels
+                                    <input type="text" id="tussenvoegsels" name="tussenvoegsels"
+                                        title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. van den">
+                                </label>
+                                <label for="achternaam">Achternaam
+                                    <input type="text" id="achternaam" name="achternaam"
+                                        title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. Bijl"
+                                        required>
+                                </label>
+                            </div>
+                        </fieldset>
+
+                        <!-- 3 -->
+                        <div class="three-a--row-three">
+                            <span class="left-short">
+                                <label for="bsn-verkrijger" class="blue-text">Burgerservicenummer overledene</label>
+                            </span>
+                            <input class="short-input" id="bsn-verkrijger" type="text" name="bsn"
+                                title="Alleen nummers gebruiken" placeholder="101234567" pattern="[1-9][0-9]{8}"
+                                required>
+                        </div>
+
+                        <fieldset class="three-a--row-four">
+                            <span class="left-long">
+                                <legend class="blue-text">Krijgt deze verkrijger waarvoor u geen aangifte doet het hele
+                                    vermogen?
+                                </legend>
+                            </span>
+                            <div>
+                                <label>
+                                    <input type="radio" name="verkrijger vermogen" value="nee" required>
+                                    Nee
+                                </label>
+                                <label>
+                                    <input type="radio" name="verkrijger vermogen" value="ja">
+                                    Ja
+                                </label>
+                            </div>
+                        </fieldset>
+
+                        <fieldset class="three-a--row-five">
+                            <span class="left-long">
+                                <legend class="blue-text">Doet deze verkrijger een beroep op diens legitieme portie
+                                    (wettelijke erfdeel)?
+                                </legend>
+                            </span>
+                            <div>
+                                <label>
+                                    <input type="radio" name="beroep op portie" value="nee" required>
+                                    Nee
+                                </label>
+                                <label>
+                                    <input type="radio" name="beroep op portie" value="ja">
+                                    Ja
+                                </label>
+                            </div>
+                        </fieldset>
+                    </div>
+
+                    <noscript>
+                        <div>
+                            <section>
+                                <h2>Verkrijger 2</h2>
+                                <div>
+                                    <button type="button">+</button>
+                                    <button type="button">-</button>
+                                </div>
+                            </section>
+                            <!-- 2 -->
+                            <fieldset class="three-a--row-two">
+                                <span class="left-short">
+                                    <legend class="blue-text">Naam</legend>
+                                </span>
+                                <div>
+                                    <label for="voornaam">Voornaam
+                                        <input type="text" id="voornaam" name="voornaam" title="Alleen letters gebruiken"
+                                            maxlength="50" placeholder="e.g. David" required>
+                                    </label>
+                                    <label for=" tussenvoegsels">Tussenvoegsels
+                                        <input type="text" id="tussenvoegsels" name="tussenvoegsels"
+                                            title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. van den">
+                                    </label>
+                                    <label for="achternaam">Achternaam
+                                        <input type="text" id="achternaam" name="achternaam"
+                                            title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. Bijl"
+                                            required>
+                                    </label>
+                                </div>
+                            </fieldset>
+    
+                            <!-- 3 -->
+                            <div class="three-a--row-three">
+                                <span class="left-short">
+                                    <label for="bsn-verkrijger" class="blue-text">Burgerservicenummer overledene</label>
+                                </span>
+                                <input class="short-input" id="bsn-verkrijger" type="text" name="bsn"
+                                    title="Alleen nummers gebruiken" placeholder="101234567" pattern="[1-9][0-9]{8}"
+                                    required>
+                            </div>
+    
+                            <fieldset class="three-a--row-four">
+                                <span class="left-long">
+                                    <legend class="blue-text">Krijgt deze verkrijger waarvoor u geen aangifte doet het hele
+                                        vermogen?
+                                    </legend>
+                                </span>
+                                <div>
+                                    <label>
+                                        <input type="radio" name="verkrijger vermogen" value="nee" required>
+                                        Nee
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="verkrijger vermogen" value="ja">
+                                        Ja
+                                    </label>
+                                </div>
+                            </fieldset>
+    
+                            <fieldset class="three-a--row-five">
+                                <span class="left-long">
+                                    <legend class="blue-text">Doet deze verkrijger een beroep op diens legitieme portie
+                                        (wettelijke erfdeel)?
+                                    </legend>
+                                </span>
+                                <div>
+                                    <label>
+                                        <input type="radio" name="beroep op portie" value="nee" required>
+                                        Nee
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="beroep op portie" value="ja">
+                                        Ja
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div>
+                            <section>
+                                <h2>Verkrijger 3</h2>
+                                <div>
+                                    <button type="button">+</button>
+                                    <button type="button">-</button>
+                                </div>
+                            </section>
+                            <!-- 2 -->
+                            <fieldset class="three-a--row-two">
+                                <span class="left-short">
+                                    <legend class="blue-text">Naam</legend>
+                                </span>
+                                <div>
+                                    <label for="voornaam">Voornaam
+                                        <input type="text" id="voornaam" name="voornaam" title="Alleen letters gebruiken"
+                                            maxlength="50" placeholder="e.g. David" required>
+                                    </label>
+                                    <label for=" tussenvoegsels">Tussenvoegsels
+                                        <input type="text" id="tussenvoegsels" name="tussenvoegsels"
+                                            title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. van den">
+                                    </label>
+                                    <label for="achternaam">Achternaam
+                                        <input type="text" id="achternaam" name="achternaam"
+                                            title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. Bijl"
+                                            required>
+                                    </label>
+                                </div>
+                            </fieldset>
+    
+                            <!-- 3 -->
+                            <div class="three-a--row-three">
+                                <span class="left-short">
+                                    <label for="bsn-verkrijger" class="blue-text">Burgerservicenummer overledene</label>
+                                </span>
+                                <input class="short-input" id="bsn-verkrijger" type="text" name="bsn"
+                                    title="Alleen nummers gebruiken" placeholder="101234567" pattern="[1-9][0-9]{8}"
+                                    required>
+                            </div>
+    
+                            <fieldset class="three-a--row-four">
+                                <span class="left-long">
+                                    <legend class="blue-text">Krijgt deze verkrijger waarvoor u geen aangifte doet het hele
+                                        vermogen?
+                                    </legend>
+                                </span>
+                                <div>
+                                    <label>
+                                        <input type="radio" name="verkrijger vermogen" value="nee" required>
+                                        Nee
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="verkrijger vermogen" value="ja">
+                                        Ja
+                                    </label>
+                                </div>
+                            </fieldset>
+    
+                            <fieldset class="three-a--row-five">
+                                <span class="left-long">
+                                    <legend class="blue-text">Doet deze verkrijger een beroep op diens legitieme portie
+                                        (wettelijke erfdeel)?
+                                    </legend>
+                                </span>
+                                <div>
+                                    <label>
+                                        <input type="radio" name="beroep op portie" value="nee" required>
+                                        Nee
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="beroep op portie" value="ja">
+                                        Ja
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+                        <div>
+                            <section>
+                                <h2>Verkrijger 4</h2>
+                                <div>
+                                    <button type="button">+</button>
+                                    <button type="button">-</button>
+                                </div>
+                            </section>
+                            <!-- 2 -->
+                            <fieldset class="three-a--row-two">
+                                <span class="left-short">
+                                    <legend class="blue-text">Naam</legend>
+                                </span>
+                                <div>
+                                    <label for="voornaam">Voornaam
+                                        <input type="text" id="voornaam" name="voornaam" title="Alleen letters gebruiken"
+                                            maxlength="50" placeholder="e.g. David" required>
+                                    </label>
+                                    <label for=" tussenvoegsels">Tussenvoegsels
+                                        <input type="text" id="tussenvoegsels" name="tussenvoegsels"
+                                            title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. van den">
+                                    </label>
+                                    <label for="achternaam">Achternaam
+                                        <input type="text" id="achternaam" name="achternaam"
+                                            title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. Bijl"
+                                            required>
+                                    </label>
+                                </div>
+                            </fieldset>
+    
+                            <!-- 3 -->
+                            <div class="three-a--row-three">
+                                <span class="left-short">
+                                    <label for="bsn-verkrijger" class="blue-text">Burgerservicenummer overledene</label>
+                                </span>
+                                <input class="short-input" id="bsn-verkrijger" type="text" name="bsn"
+                                    title="Alleen nummers gebruiken" placeholder="101234567" pattern="[1-9][0-9]{8}"
+                                    required>
+                            </div>
+    
+                            <fieldset class="three-a--row-four">
+                                <span class="left-long">
+                                    <legend class="blue-text">Krijgt deze verkrijger waarvoor u geen aangifte doet het hele
+                                        vermogen?
+                                    </legend>
+                                </span>
+                                <div>
+                                    <label>
+                                        <input type="radio" name="verkrijger vermogen" value="nee" required>
+                                        Nee
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="verkrijger vermogen" value="ja">
+                                        Ja
+                                    </label>
+                                </div>
+                            </fieldset>
+    
+                            <fieldset class="three-a--row-five">
+                                <span class="left-long">
+                                    <legend class="blue-text">Doet deze verkrijger een beroep op diens legitieme portie
+                                        (wettelijke erfdeel)?
+                                    </legend>
+                                </span>
+                                <div>
+                                    <label>
+                                        <input type="radio" name="beroep op portie" value="nee" required>
+                                        Nee
+                                    </label>
+                                    <label>
+                                        <input type="radio" name="beroep op portie" value="ja">
+                                        Ja
+                                    </label>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </noscript>
+
+
+                </fieldset>
             </div>
 
             <div id="page-four">

@@ -1,0 +1,412 @@
+/* ========================== */
+/* GENERAL STYLING */
+/* ========================== */
+
+.blue-text {
+  color: var(--blue-300);
+}
+
+main {
+  padding: .75em;
+}
+
+form {
+  position: relative;
+  background-color: white;
+  padding: 7em 2em 2em;
+}
+
+/* ========================== */
+/* GENERAL FIELDSETS */
+/* ========================== */
+
+.number-letter {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.number-letter>legend {
+  width: 100%;
+  position: relative;
+  padding: 3em 0 1em 0;
+  margin-bottom: 1em;
+}
+
+.number-letter>legend::after {
+  content: '';
+  position: absolute;
+  height: 1px;
+  width: 100%;
+  background-color: #E6E6E8;
+  bottom: 0;
+  left: 0;
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 1 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+/* ========================== */
+/* FIELDSET 1a */
+/* ========================== */
+
+.one-a--row-one,
+.one-a--row-two,
+.one-a--row-three {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* row 1 */
+.one-a--row-one>div {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.one-a--row-one>div>label {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+
+/* row 3 */
+.one-a--row-three>div {
+  display: flex;
+  gap: 1em;
+}
+
+.one-a--row-three>div>label {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+
+
+/* ========================== */
+/* FIELDSET 1b */
+/* ========================== */
+
+/* disable feature -- hulp van Elton */
+/* .one-b:has(.skip:checked)>*:nth-of-type(n + 2) {
+opacity: .3;
+pointer-events: none;
+} */
+
+.one-b--row-one,
+.one-b--row-two,
+.one-b--row-three,
+.one-b--row-four {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.one-b--row-one>div,
+.one-b--row-two>div,
+.one-b--row-three>div {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+
+.one-b--row-one>div>label,
+.one-b--row-two>div>label,
+.one-b--row-three>div>label {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+.one-b--row-two div label:nth-of-type(2)>div {
+  display: flex;
+  gap: 1em;
+  align-items: center;
+}
+
+.upload-button label {
+  display: grid;
+  min-width: 6em;
+  justify-content: center;
+  text-align: center;
+  border-radius: 3px;
+  padding: 1em 1em;
+  background-color: var(--blue-100);
+  color: var(--white);
+  font-size: .75em;
+  box-shadow: inset 0 -2.5px 0 rgba(0, 0, 0, 0.3);
+}
+
+.upload-button {
+  display: block;
+}
+
+@supports selector(:has(*)) {
+  form .one-b:not(:has(.expand:checked)) .upload-button {
+    display: none;
+  }
+
+  form .one-b:not(:has(.expand:checked)) .one-b--row-two div label:nth-of-type(2)>div {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* row 4 */
+.one-b--row-four>div {
+  display: flex;
+  gap: 1em;
+}
+
+.one-b--row-four>div>label {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+
+
+/* ========================== */
+/* FIELDSET 1c */
+/* ========================== */
+
+.one-c--row-one,
+.one-c--row-two {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.one-c--row-one>div,
+.one-c--row-two>div {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+
+.one-c--row-one>div>label,
+.one-c--row-two>div>label {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+
+/* ========================== */
+/* NEXT PAGE BUTTON */
+/* ========================== */
+
+.button-container {
+  width: max-content;
+  margin: 7em auto 4em;
+}
+
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 2 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+/* ========================== */
+/* FIELDSET 2a */
+/* ========================== */
+
+.two-a--row-one {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+
+/* row 1 */
+.two-a--row-one>div {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* doesnt work sad */
+/* .two-a--row-one>div:has(input:not(:placeholder-shown)) input:placeholder-shown {
+opacity: .3;
+pointer-events: none;
+filter: saturate(0)
+} */
+
+.two-a--row-one>div>label {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 3 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+/* ========================== */
+/* FIELDSET 3a */
+/* ========================== */
+
+.three-a--row-one {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* row 1 */
+.three-a--row-one>div {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.three-a--row-one>div>label {
+  display: flex;
+  gap: .5em;
+}
+
+.three-a--row-one>fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.three-a--row-one>fieldset>div {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.three-a--row-one>fieldset>div>label {
+  display: flex;
+  gap: .5em;
+}
+
+/* row 2 */
+.three-a>div {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.three-a>div section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.three-a>div section button {
+  border-radius: 3px;
+  padding: 10px;
+  background-color: var(--blue-100);
+  color: var(--white);
+  font-size: 1em;
+  box-shadow: inset 0 -2.5px 0 rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+/* row 2 and 3 */
+.three-a>div {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  background-color: var(--bg-color-200);
+  padding: 2em;
+}
+
+.three-a--row-two,
+.three-a--row-three {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* row 2 */
+.three-a--row-two>div {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.three-a--row-two>div>label {
+  display: flex;
+  flex-direction: column;
+  gap: .5em;
+}
+
+/* row 4 & 5 */
+.three-a--row-four,
+.three-a--row-five {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.three-a--row-four>div,
+.three-a--row-five>div {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.three-a--row-four>div>label,
+.three-a--row-five>div>label {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+}
+
+/* -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- 3 -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=- */
+/* ========================== */
+/* FIELDSET 3a NO SCRIPT*/
+/* ========================== */
+
+/* row 2 */
+.three-a>noscript {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+}
+
+.three-a>noscript>div {
+  display: flex;
+  flex-direction: column;
+  gap: 2em;
+  background-color: var(--bg-color-200);
+  padding: 2em;
+}
+
+.three-a>noscript>div section {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.three-a>noscript>div section button {
+  border-radius: 3px;
+  padding: 10px;
+  background-color: var(--blue-100);
+  color: var(--white);
+  font-size: 1em;
+  box-shadow: inset 0 -2.5px 0 rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+
+
+
+
+/* ========================== */
+/* ASIDE */
+/* ========================== */
+
+aside {
+  position: absolute;
+  top: 2em;
+  left: 50%;
+  translate: -50% 0;
+  height: auto;
+  width: max-content;
+}
+
+aside div {
+  display: flex;
+  gap: 1em;
+}
+
+aside a {
+  border-radius: 3px;
+  padding: 1em;
+  background-color: var(--blue-100);
+  color: var(--white);
+  box-shadow: inset 0 -2.5px 0 rgba(0, 0, 0, 0.3);
+}
