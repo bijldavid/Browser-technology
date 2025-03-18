@@ -10,14 +10,22 @@
     <link rel="stylesheet" href="styles/form-narrow.css">
     <link rel="stylesheet" href="styles/form-wide.css">
     <title>NS belasting formulier</title>
+
+    <!-- polyfill anchor position -->
+    <script type="module">
+        if (!("anchorName" in document.documentElement.style)) {
+            import("https://unpkg.com/@oddbird/css-anchor-positioning");
+        }
+    </script>
 </head>
 
 <body>
-    <header><img src="images/error-symbol2.svg">
+    <header>
+        <img src="images/error-symbol2.svg" alt="NS error symbol">
         <p>Dit is een school project!!!</p>
     </header>
     <header>
-        <img src="images/Logo_NS.svg" alt="#">
+        <img src="images/Logo_NS.svg" alt="NS logo">
     </header>
     <main>
 
@@ -33,6 +41,12 @@
             </aside>
 
             <div id="page-one">
+
+                <section class="disabled error-message">
+                    <h2>Er zijn één of meerdere velden niet of onjuist ingevuld. Controleer uw gegevens en probeer het
+                        opnieuw.</h2>
+                    <ul></ul>
+                </section>
                 <!-- -=-=-=-=-=-=-=-=-=-=- 1a -=-=-=-=-=-=-=-=-=-=- -->
                 <fieldset class="number-letter one-a">
                     <legend>1a</legend>
@@ -44,15 +58,15 @@
                         </span>
                         <div>
                             <label for="voornaam">Voornaam
-                                <input type="text" id="voornaam" name="voornaam" title="Alleen letters gebruiken"
+                                <input type="text" id="voornaam" name="Voornaam"
                                     maxlength="50" placeholder="e.g. David" required>
                             </label>
-                            <label for=" tussenvoegsels">Tussenvoegsels
-                                <input type="text" id="tussenvoegsels" name="tussenvoegsels"
-                                    title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. van den">
+                            <label for="tussenvoegsels">Tussenvoegsels
+                                <input type="text" id="tussenvoegsels" name="Tussenvoegsels"
+                                 maxlength="50" placeholder="e.g. van den">
                             </label>
                             <label for="achternaam">Achternaam
-                                <input type="text" id="achternaam" name="achternaam" title="Alleen letters gebruiken"
+                                <input type="text" id="achternaam" name="Achternaam"
                                     maxlength="50" placeholder="e.g. Bijl" required>
                             </label>
                         </div>
@@ -63,7 +77,7 @@
                         <span class="left-short">
                             <label for="bsn-overledene" class="blue-text">Burgerservicenummer overledene</label>
                         </span>
-                        <input class="short-input" id="bsn-overledene" type="text" name="bsn"
+                        <input class="short-input" id="bsn-overledene" type="text" name="BSN"
                             title="Alleen nummers gebruiken" placeholder="123401234" pattern="[1-9][0-9]{8}" required>
                     </div>
 
@@ -75,23 +89,23 @@
                         <div class="fine">
                             <!-- fine ↓↓↓ -->
                             <label for="dag-od">Dag
-                                <input class="date-input" id="dag-od" type="text" name="overlijdensdatum"
-                                    title="Vul een correcte datum in" placeholder="dd" minlength="2" maxlength="2"
-                                    pattern="[0-9][0-9]" required>
+                                <input class="date-input" id="dag-od" type="text" name="Overlijdensdatum dag"
+                                    title="Vul een correcte datum in" placeholder="dd" maxlength="2"
+                                    pattern="^(0?[1-9]|[12][0-9]|3[01])$" required>
                             </label>
                             <label for="maand-od">Maand
-                                <input class="date-input" id="maand-od" type="text" name="overlijdensdatum"
-                                    title="Vul een correcte datum in" placeholder="mm" minlength="2" maxlength="2"
-                                    pattern="[0-9][0-9]" required>
+                                <input class="date-input" id="maand-od" type="text" name="Overlijdensdatum maand"
+                                    title="Vul een correcte datum in" placeholder="mm" maxlength="2"
+                                    pattern="^(0?[1-9]|1[0-2])$" required>
                             </label>
                             <label for="jaar-od">Jaar
-                                <input class="date-input" id="jaar-od" type="text" name="overlijdensdatum"
+                                <input class="date-input" id="jaar-od" type="text" name="Overlijdensdatum jaar"
                                     title="Vul een correcte datum in" placeholder="jjjj" minlength="4" maxlength="4"
-                                    pattern="[0-9][0-9][0-9][0-9]" required>
+                                    pattern="^\d{4}$" required>
                             </label>
                         </div>
                         <!-- coarse ↓↓↓ -->
-                        <input class="coarse" type="date" name="overlijdensdatum" title="Vul een correcte datum in"
+                        <input class="coarse" type="date" name="Overlijdensdatum" title="Vul een correcte datum in"
                             inputmode="numeric" min="1900-09-06" max="2025-03-06">
                     </fieldset>
 
@@ -110,11 +124,11 @@
                         </span>
                         <div>
                             <label>
-                                <input class="skip" type="radio" name="burgerlijke_staat" required> Nee. Ga
+                                <input class="skip" type="radio" name="Getrouwd/geregistreerd partner" required> Nee. Ga
                                 verder met vraag 1c.
                             </label>
                             <label>
-                                <input type="radio" name="burgerlijke_staat">
+                                <input type="radio" name="Getrouwd/geregistreerd partner">
                                 Ja
                             </label>
                         </div>
@@ -126,23 +140,27 @@
                             <legend class="blue-text">Hadden de overledene en diens echtgenoot of geregistreerd partner
                                 huwelijkse of
                                 partnerschaps-voorwaarden laten vastleggen in een notariële
-                                akte?</legend>
+                                akte? <button popovertarget="notariele-akte" class="popover-icon"
+                                    type="button">i</button>
+                            </legend>
+                            <div popover id="notariele-akte" class="popover-result">Een notariële akte is een officieel,
+                                door een notaris opgemaakt en ondertekend document met juridische bewijskracht.
+                            </div>
                         </span>
                         <div>
                             <label>
-                                <input type="radio" name="huwelijkse_voorwaarden" value="nee" required>
+                                <input type="radio" name="Huwelijkse voorwaarden" value="nee" required>
                                 Nee
                             </label>
                             <label>
-                                <input class="expand" type="radio" name="huwelijkse_voorwaarden" value="ja">
-                                <div>
-                                    Ja. Stuur een kopie van de akte mee met de aangifte.
-                                    <div class="upload-button">
-                                        <input type="file" id="file-upload" name="file-upload">
-                                        <label for="file-upload">Kies bestand</label>
-                                    </div>
-                                </div>
+                                <input class="expand" type="radio" name="Huwelijkse_voorwaarden" value="ja">
+                                Ja. Stuur een kopie van de akte mee met de aangifte.
                             </label>
+                            <div class="upload-button">
+                                <label for="file-upload">Kies bestand
+                                    <input type="file" id="file-upload" name="File upload">
+                                </label>
+                            </div>
                         </div>
                     </fieldset>
 
@@ -154,11 +172,11 @@
                         </span>
                         <div>
                             <label>
-                                <input type="radio" name="finaal_verrekenbeding" value="nee" required>
+                                <input type="radio" name="Finaal verrekenbeding" value="nee" required>
                                 Nee
                             </label>
                             <label>
-                                <input type="radio" name="finaal_verrekenbeding" value="ja">
+                                <input type="radio" name="Finaal verrekenbeding" value="ja">
                                 Ja
                             </label>
                         </div>
@@ -172,20 +190,20 @@
                         <div class="fine">
                             <!-- fine ↓↓↓ -->
                             <label for="dag-hop">Dag
-                                <input class="date-input" id="dag-hop" type="text" name="datum hop"
-                                    title="Vul een correcte datum in" placeholder="dd" pattern="[0-9]" required>
+                                <input class="date-input" id="dag-hop" type="text" name="H.O.P. dag"
+                                    title="Vul een correcte datum in" placeholder="dd" pattern="^(0?[1-9]|[12][0-9]|3[01])$" required>
                             </label>
                             <label for="maand-hop">Maand
-                                <input class="date-input" id="maand-hop" type="text" name="datum hop"
-                                    title="Vul een correcte datum in" placeholder="mm" pattern="[0-9]" required>
+                                <input class="date-input" id="maand-hop" type="text" name="H.O.P. maand"
+                                    title="Vul een correcte datum in" placeholder="mm" pattern="^(0?[1-9]|1[0-2])$" required>
                             </label>
                             <label for="jaar-hop">Jaar
-                                <input class="date-input" id="jaar-hop" type="text" name="datum hop"
-                                    title="Vul een correcte datum in" placeholder="jjjj" pattern="[0-9]" required>
+                                <input class="date-input" id="jaar-hop" type="text" name="H.O.P. jaar"
+                                    title="Vul een correcte datum in" placeholder="jjjj" pattern="^\d{4}$" required>
                             </label>
                         </div>
                         <!-- coarse ↓↓↓ -->
-                        <input class="coarse" type="date" name="datum hop" title="Vul een correcte datum in"
+                        <input class="coarse" type="date" name="Datum H.O.P." title="Vul een correcte datum in"
                             inputmode="numeric">
                     </fieldset>
 
@@ -205,11 +223,11 @@
                         </span>
                         <div>
                             <label>
-                                <input type="radio" name="overleden kinderen" value="nee" required>
+                                <input type="radio" name="Kinderen overledene" value="nee" required>
                                 Nee. Ga verder met vraag 1d.
                             </label>
                             <label>
-                                <input type="radio" name="overleden kinderen" value="ja">
+                                <input type="radio" name="Kinderen overledene" value="ja">
                                 Ja
                             </label>
                         </div>
@@ -219,17 +237,16 @@
                     <fieldset class="one-c--row-two">
                         <span class="left-long">
                             <legend class="blue-text">Is 1 van deze kinderen eerder overleden dan de overledene voor wie
-                                u nu aangifte
-                                doet?.
+                                u nu aangifte doet?.
                             </legend>
                         </span>
                         <div>
                             <label>
-                                <input type="radio" name="eerder overleden" value="nee" required>
+                                <input type="radio" name="Eerder overleden" value="nee" required>
                                 Nee. Ga verder met vraag 1d.
                             </label>
                             <label>
-                                <input type="radio" name="eerder overleden" value="ja">
+                                <input type="radio" name="Eerder overleden" value="ja">
                                 Ja
                             </label>
                         </div>
@@ -238,7 +255,7 @@
                 </fieldset>
 
                 <div class="button-container">
-                    <a id="volgende" href="#page-two">Volgende stap</a>
+                    <a class="volgende" href="#page-two">Volgende stap</a>
                 </div>
             </div>
 
@@ -250,6 +267,12 @@
 
 
             <div id="page-two">
+
+                <section class="disabled error-message">
+                    <h2>Er zijn één of meerdere velden niet of onjuist ingevuld. Controleer uw gegevens en probeer het
+                        opnieuw.</h2>
+                    <ul></ul>
+                </section>
                 <!-- -=-=-=-=-=-=-=-=-=-=- 2a -=-=-=-=-=-=-=-=-=-=- -->
                 <fieldset class="number-letter two-a">
                     <legend>2a</legend>
@@ -263,22 +286,42 @@
                         </span>
                         <div>
                             <label for="brg">Burgerservicenummer/ RSIN gemachtigde
-                                <input class="skip" type="text" id="brg" placeholder="e.g. David">
+                                <input class="skip" type="text" id="brg" name="BSN/RSIN gemachtigde"
+                                    placeholder="e.g. David">
                             </label>
                             <label for="beconnummer">Beconnummer adviseur
-                                <input class="skip" type="text" id="beconnummer" placeholder="e.g. David">
+                                <input class="skip" type="text" id="beconnummer" name="Beconnummer adviseur"
+                                    placeholder="e.g. David">
                             </label>
                             <label for="protocolnummer">Protocolnummer notaris
-                                <input class="skip" type="text" id="protocolnummer" placeholder="e.g. David">
+                                <input class="skip" type="text" id="protocolnummer" name="Protocolnummer notaris"
+                                    placeholder="e.g. David">
                             </label>
                         </div>
                     </fieldset>
 
 
                 </fieldset>
+
+                <div class="button-container">
+                    <a class="volgende" href="#page-three">Volgende stap</a>
+                </div>
+
             </div>
 
+
+
+
+
+
+
             <div id="page-three">
+
+                <section class="disabled error-message">
+                    <h2>Er zijn één of meerdere velden niet of onjuist ingevuld. Controleer uw gegevens en probeer het
+                        opnieuw.</h2>
+                    <ul></ul>
+                </section>
                 <!-- -=-=-=-=-=-=-=-=-=-=- 3a -=-=-=-=-=-=-=-=-=-=- -->
                 <fieldset class="number-letter three-a">
                     <legend>3a</legend>
@@ -289,15 +332,19 @@
                             <legend class="blue-text">Heeft de overledene in het testament een executeur aangewezen om
                                 de erfenis af te handelen? Dan moet de executeur aangifte doen voor alle personen en/of
                                 instellingen die iets krijgen uit de nalatenschap (verkrijgers).
+                                <button popovertarget="verkrijger-po" class="popover-icon" type="button">i</button>
                             </legend>
+                            <div popover id="verkrijger-po" class="popover-result">Een verkrijger bij een erfenis is
+                                degene die (een deel van) de nalatenschap ontvangt en erfbelasting moet betalen.
+                            </div>
                         </span>
                         <div>
                             <label>
-                                <input type="radio" name="executeur aangewezen" required>
+                                <input type="radio" name="Executeur aangewezen" required>
                                 Nee, er is geen executeur aangewezen.
                             </label>
                             <label>
-                                <input class="skip" type="radio" name="executeur aangewezen">
+                                <input class="skip" type="radio" name="Executeur aangewezen">
                                 Ik ben executeur en doe aangifte voor alle personen en/of instellingen die
                                 iets krijgen uit de nalatenschap (verkrijgers). Geef aan voor hoeveel verkrijgers u
                                 aangifte doet. Bent u zelf ook verkrijger? Tel uzelf dan ook mee.
@@ -311,23 +358,23 @@
                             </span>
                             <div>
                                 <label>
-                                    <input type="radio" name="geen executeur aangewezen">
+                                    <input type="radio" name="Geen executeur aangewezen">
                                     Ik ben erfgenaam en ben gemachtigd om aangifte te doen voor meerdere
                                     personen en/of instellingen die iets krijgen uit de nalatenschap (verkrijgers).
                                     Geef aan voor hoeveel verkrijgers u aangifte doet. Tel uzelf ook mee.
                                 </label>
                                 <label>
-                                    <input type="radio" name="geen executeur aangewezen">
+                                    <input type="radio" name="Geen executeur aangewezen">
                                     Ik ben erfgenaam en doe samen met andere erfgenamen aangifte.
                                     Geef het aantal personen en/of instellingen aan die iets krijgen uit de nalatenschap
                                     (verkrijgers). Tel uzelf ook mee.
                                 </label>
                                 <label>
-                                    <input id="alleen" type="radio" name="geen executeur aangewezen">
+                                    <input id="alleen" type="radio" name="Geen executeur aangewezen">
                                     Ik ben erfgenaam en doe alleen aangifte voor mijzelf.
                                 </label>
                                 <label>
-                                    <input type="radio" name="geen executeur aangewezen">
+                                    <input type="radio" name="Geen executeur aangewezen">
                                     Ik ben geen erfgenaam, maar ben gemachtigd om aangifte te doen. Geef aan voor
                                     hoeveel verkrijgers u aangifte doet.
                                 </label>
@@ -349,18 +396,17 @@
                                 <legend class="blue-text">Naam</legend>
                             </span>
                             <div>
-                                <label for="voornaam">Voornaam
-                                    <input type="text" id="voornaam" name="voornaam" title="Alleen letters gebruiken"
-                                        maxlength="50" placeholder="e.g. David" required>
+                                <label>Voornaam
+                                    <input type="text" name="Voornaam verkrijger" title="Alleen letters gebruiken" maxlength="50"
+                                        placeholder="e.g. David" required>
                                 </label>
-                                <label for=" tussenvoegsels">Tussenvoegsels
-                                    <input type="text" id="tussenvoegsels" name="tussenvoegsels"
-                                        title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. van den">
+                                <label>Tussenvoegsels
+                                    <input type="text" name="Tussenvoegsels verkrijger" title="Alleen letters gebruiken"
+                                        maxlength="50" placeholder="e.g. van den">
                                 </label>
-                                <label for="achternaam">Achternaam
-                                    <input type="text" id="achternaam" name="achternaam"
-                                        title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. Bijl"
-                                        required>
+                                <label>Achternaam
+                                    <input type="text" name="Achternaam verkrijger" title="Alleen letters gebruiken" maxlength="50"
+                                        placeholder="e.g. Bijl" required>
                                 </label>
                             </div>
                         </fieldset>
@@ -370,7 +416,7 @@
                             <span class="left-short">
                                 <label for="bsn-verkrijger" class="blue-text">Burgerservicenummer overledene</label>
                             </span>
-                            <input class="short-input" id="bsn-verkrijger" type="text" name="bsn"
+                            <input class="short-input" id="bsn-verkrijger" type="text" name="BSN verkrijger"
                                 title="Alleen nummers gebruiken" placeholder="101234567" pattern="[1-9][0-9]{8}"
                                 required>
                         </div>
@@ -383,11 +429,11 @@
                             </span>
                             <div>
                                 <label>
-                                    <input type="radio" name="verkrijger vermogen" value="nee" required>
+                                    <input type="radio" name="Verkrijger vermogen" value="nee" required>
                                     Nee
                                 </label>
                                 <label>
-                                    <input type="radio" name="verkrijger vermogen" value="ja">
+                                    <input type="radio" name="Verkrijger vermogen" value="ja">
                                     Ja
                                 </label>
                             </div>
@@ -401,11 +447,11 @@
                             </span>
                             <div>
                                 <label>
-                                    <input type="radio" name="beroep op portie" value="nee" required>
+                                    <input type="radio" name="Beroep op portie" value="nee" required>
                                     Nee
                                 </label>
                                 <label>
-                                    <input type="radio" name="beroep op portie" value="ja">
+                                    <input type="radio" name="Beroep op portie" value="ja">
                                     Ja
                                 </label>
                             </div>
@@ -427,50 +473,51 @@
                                     <legend class="blue-text">Naam</legend>
                                 </span>
                                 <div>
-                                    <label for="voornaam">Voornaam
-                                        <input type="text" id="voornaam" name="voornaam" title="Alleen letters gebruiken"
+                                    <label>Voornaam
+                                        <input type="text" name="Voornaam verkrijger" title="Alleen letters gebruiken"
                                             maxlength="50" placeholder="e.g. David" required>
                                     </label>
-                                    <label for=" tussenvoegsels">Tussenvoegsels
-                                        <input type="text" id="tussenvoegsels" name="tussenvoegsels"
-                                            title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. van den">
+                                    <label>Tussenvoegsels
+                                        <input type="text" name="Tussenvoegsels verkrijger" title="Alleen letters gebruiken"
+                                            maxlength="50" placeholder="e.g. van den">
                                     </label>
-                                    <label for="achternaam">Achternaam
-                                        <input type="text" id="achternaam" name="achternaam"
-                                            title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. Bijl"
-                                            required>
+                                    <label>Achternaam
+                                        <input type="text" name="Achternaam verkrijger" title="Alleen letters gebruiken"
+                                            maxlength="50" placeholder="e.g. Bijl" required>
                                     </label>
                                 </div>
                             </fieldset>
-    
+
                             <!-- 3 -->
                             <div class="three-a--row-three">
                                 <span class="left-short">
-                                    <label for="bsn-verkrijger" class="blue-text">Burgerservicenummer overledene</label>
+                                    <label for="bsn-verkrijger-v1" class="blue-text">Burgerservicenummer
+                                        overledene</label>
                                 </span>
-                                <input class="short-input" id="bsn-verkrijger" type="text" name="bsn"
+                                <input class="short-input" id="bsn-verkrijger-v1" type="text" name="BSN verkrijger"
                                     title="Alleen nummers gebruiken" placeholder="101234567" pattern="[1-9][0-9]{8}"
                                     required>
                             </div>
-    
+
                             <fieldset class="three-a--row-four">
                                 <span class="left-long">
-                                    <legend class="blue-text">Krijgt deze verkrijger waarvoor u geen aangifte doet het hele
+                                    <legend class="blue-text">Krijgt deze verkrijger waarvoor u geen aangifte doet het
+                                        hele
                                         vermogen?
                                     </legend>
                                 </span>
                                 <div>
                                     <label>
-                                        <input type="radio" name="verkrijger vermogen" value="nee" required>
+                                        <input type="radio" name="Verkrijger vermogen" value="nee" required>
                                         Nee
                                     </label>
                                     <label>
-                                        <input type="radio" name="verkrijger vermogen" value="ja">
+                                        <input type="radio" name="Verkrijger vermogen" value="ja">
                                         Ja
                                     </label>
                                 </div>
                             </fieldset>
-    
+
                             <fieldset class="three-a--row-five">
                                 <span class="left-long">
                                     <legend class="blue-text">Doet deze verkrijger een beroep op diens legitieme portie
@@ -479,11 +526,11 @@
                                 </span>
                                 <div>
                                     <label>
-                                        <input type="radio" name="beroep op portie" value="nee" required>
+                                        <input type="radio" name="Beroep op portie" value="nee" required>
                                         Nee
                                     </label>
                                     <label>
-                                        <input type="radio" name="beroep op portie" value="ja">
+                                        <input type="radio" name="Beroep op portie" value="ja">
                                         Ja
                                     </label>
                                 </div>
@@ -503,50 +550,51 @@
                                     <legend class="blue-text">Naam</legend>
                                 </span>
                                 <div>
-                                    <label for="voornaam">Voornaam
-                                        <input type="text" id="voornaam" name="voornaam" title="Alleen letters gebruiken"
+                                    <label>Voornaam
+                                        <input type="text" name="Voornaam verkrijger" title="Alleen letters gebruiken"
                                             maxlength="50" placeholder="e.g. David" required>
                                     </label>
-                                    <label for=" tussenvoegsels">Tussenvoegsels
-                                        <input type="text" id="tussenvoegsels" name="tussenvoegsels"
-                                            title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. van den">
+                                    <label>Tussenvoegsels
+                                        <input type="text" name="Tussenvoegsels verkrijger" title="Alleen letters gebruiken"
+                                            maxlength="50" placeholder="e.g. van den">
                                     </label>
-                                    <label for="achternaam">Achternaam
-                                        <input type="text" id="achternaam" name="achternaam"
-                                            title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. Bijl"
-                                            required>
+                                    <label>Achternaam
+                                        <input type="text" name="Achternaam verkrijger" title="Alleen letters gebruiken"
+                                            maxlength="50" placeholder="e.g. Bijl" required>
                                     </label>
                                 </div>
                             </fieldset>
-    
+
                             <!-- 3 -->
                             <div class="three-a--row-three">
                                 <span class="left-short">
-                                    <label for="bsn-verkrijger" class="blue-text">Burgerservicenummer overledene</label>
+                                    <label for="bsn-verkrijger-v2" class="blue-text">Burgerservicenummer
+                                        overledene</label>
                                 </span>
-                                <input class="short-input" id="bsn-verkrijger" type="text" name="bsn"
+                                <input class="short-input" id="bsn-verkrijger-v2" type="text" name="BSN verkrijger"
                                     title="Alleen nummers gebruiken" placeholder="101234567" pattern="[1-9][0-9]{8}"
                                     required>
                             </div>
-    
+
                             <fieldset class="three-a--row-four">
                                 <span class="left-long">
-                                    <legend class="blue-text">Krijgt deze verkrijger waarvoor u geen aangifte doet het hele
+                                    <legend class="blue-text">Krijgt deze verkrijger waarvoor u geen aangifte doet het
+                                        hele
                                         vermogen?
                                     </legend>
                                 </span>
                                 <div>
                                     <label>
-                                        <input type="radio" name="verkrijger vermogen" value="nee" required>
+                                        <input type="radio" name="Verkrijger vermogen" value="nee" required>
                                         Nee
                                     </label>
                                     <label>
-                                        <input type="radio" name="verkrijger vermogen" value="ja">
+                                        <input type="radio" name="Verkrijger vermogen" value="ja">
                                         Ja
                                     </label>
                                 </div>
                             </fieldset>
-    
+
                             <fieldset class="three-a--row-five">
                                 <span class="left-long">
                                     <legend class="blue-text">Doet deze verkrijger een beroep op diens legitieme portie
@@ -555,11 +603,11 @@
                                 </span>
                                 <div>
                                     <label>
-                                        <input type="radio" name="beroep op portie" value="nee" required>
+                                        <input type="radio" name="Beroep op portie" value="nee" required>
                                         Nee
                                     </label>
                                     <label>
-                                        <input type="radio" name="beroep op portie" value="ja">
+                                        <input type="radio" name="Beroep op portie" value="ja">
                                         Ja
                                     </label>
                                 </div>
@@ -579,50 +627,51 @@
                                     <legend class="blue-text">Naam</legend>
                                 </span>
                                 <div>
-                                    <label for="voornaam">Voornaam
-                                        <input type="text" id="voornaam" name="voornaam" title="Alleen letters gebruiken"
+                                    <label>Voornaam
+                                        <input type="text" name="Voornaam verkrijger" title="Alleen letters gebruiken"
                                             maxlength="50" placeholder="e.g. David" required>
                                     </label>
-                                    <label for=" tussenvoegsels">Tussenvoegsels
-                                        <input type="text" id="tussenvoegsels" name="tussenvoegsels"
-                                            title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. van den">
+                                    <label>Tussenvoegsels
+                                        <input type="text" name="Tussenvoegsels verkrijger" title="Alleen letters gebruiken"
+                                            maxlength="50" placeholder="e.g. van den">
                                     </label>
-                                    <label for="achternaam">Achternaam
-                                        <input type="text" id="achternaam" name="achternaam"
-                                            title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. Bijl"
-                                            required>
+                                    <label>Achternaam
+                                        <input type="text" name="Achternaam verkrijger" title="Alleen letters gebruiken"
+                                            maxlength="50" placeholder="e.g. Bijl" required>
                                     </label>
                                 </div>
                             </fieldset>
-    
+
                             <!-- 3 -->
                             <div class="three-a--row-three">
                                 <span class="left-short">
-                                    <label for="bsn-verkrijger" class="blue-text">Burgerservicenummer overledene</label>
+                                    <label for="bsn-verkrijger-v3" class="blue-text">Burgerservicenummer
+                                        overledene</label>
                                 </span>
-                                <input class="short-input" id="bsn-verkrijger" type="text" name="bsn"
+                                <input class="short-input" id="bsn-verkrijger-v3" type="text" name="BSN verkrijger"
                                     title="Alleen nummers gebruiken" placeholder="101234567" pattern="[1-9][0-9]{8}"
                                     required>
                             </div>
-    
+
                             <fieldset class="three-a--row-four">
                                 <span class="left-long">
-                                    <legend class="blue-text">Krijgt deze verkrijger waarvoor u geen aangifte doet het hele
+                                    <legend class="blue-text">Krijgt deze verkrijger waarvoor u geen aangifte doet het
+                                        hele
                                         vermogen?
                                     </legend>
                                 </span>
                                 <div>
                                     <label>
-                                        <input type="radio" name="verkrijger vermogen" value="nee" required>
+                                        <input type="radio" name="Verkrijger vermogen" value="nee" required>
                                         Nee
                                     </label>
                                     <label>
-                                        <input type="radio" name="verkrijger vermogen" value="ja">
+                                        <input type="radio" name="Verkrijger vermogen" value="ja">
                                         Ja
                                     </label>
                                 </div>
                             </fieldset>
-    
+
                             <fieldset class="three-a--row-five">
                                 <span class="left-long">
                                     <legend class="blue-text">Doet deze verkrijger een beroep op diens legitieme portie
@@ -631,20 +680,23 @@
                                 </span>
                                 <div>
                                     <label>
-                                        <input type="radio" name="beroep op portie" value="nee" required>
+                                        <input type="radio" name="Beroep op portie" value="nee" required>
                                         Nee
                                     </label>
                                     <label>
-                                        <input type="radio" name="beroep op portie" value="ja">
+                                        <input type="radio" name="Beroep op portie" value="ja">
                                         Ja
                                     </label>
                                 </div>
                             </fieldset>
                         </div>
                     </noscript>
-
-
                 </fieldset>
+
+                <div class="button-container">
+                    <a class="volgende" href="#page-two">Volgende stap</a>
+                </div>
+
             </div>
 
             <div id="page-four">

@@ -285,6 +285,7 @@ filter: saturate(0)
 }
 
 .three-a>div section button {
+  border: none;
   border-radius: 3px;
   padding: 10px;
   background-color: var(--blue-100);

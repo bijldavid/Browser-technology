@@ -81,37 +81,61 @@ threeAradioButtons.forEach(function (radio) {
 
 
 
+// VALIDATION API
+// CREDIT: Sybren
+const volgendeLinks = document.querySelectorAll('.volgende');
 
-// CREDIT: Sybren:
-// const volgendeLinks = document.querySelectorAll('a[id^=volgende]');
-// const sections = document.querySelectorAll('[id^=page]');
+volgendeLinks.forEach(link => {
+    link.addEventListener('click', function (event) {
+        const section = this.closest('[id^=page]');
 
-// volgendeLinks.forEach(link => {
-//     link.addEventListener('click', function (event) {
-//         const section = this.closest('[id^=page]');
-//         const inputs = section.querySelectorAll('input[required]');
-//         let allFilled = true;
+        const errorMessage = section.querySelector('.error-message');
+        const errorList = errorMessage.querySelector('ul');
 
-//         inputs.forEach(input => {
-//             if (!input.checkValidity()) {
-//                 allFilled = false;
-//             }
-//         });
+        errorList.innerHTML = '';
 
-//         if (!allFilled) {
-//             event.preventDefault();
-//             alert('Please fill all the required input fields in the section.');
-//         }
-//     });
-// });
+        const inputs = section.querySelectorAll('input[required]');
+        let allFilled = true;
+
+        inputs.forEach(input => {
+            if (!input.checkValidity()) {
+                allFilled = false;
+
+                const fieldName = input.getAttribute('name');
+                const listItem = document.createElement('li');
+                listItem.textContent = fieldName;
+                errorList.appendChild(listItem);
+
+                if (input.type !== 'radio' && input.type !== 'checkbox') {
+                    input.classList.add('invalid-input');
+
+                    input.addEventListener('input', function () {
+                        this.classList.remove('invalid-input');
+                    });
+                }
+            }
+        });
+
+        if (!allFilled) {
+            event.preventDefault();
+            errorMessage.classList.remove('disabled');
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        } else {
+            errorMessage.classList.add('disabled');
+        }
+    });
+});
 
 
 
 
 
 
-
-// CREDIT: CLAUDE AI
+// VERKRIJGERS TOEVOEGEN
+// CREDIT: CLAUDE AI (kan ik niet uitleggen)
 document.addEventListener('DOMContentLoaded', function () {
     // Keep track of the highest verkrijger number
     let highestVerkrijgerNumber = 1;
