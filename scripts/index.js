@@ -119,15 +119,78 @@ volgendeLinks.forEach(link => {
         if (!allFilled) {
             event.preventDefault();
             errorMessage.classList.remove('disabled');
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            // CREDIT: chadGPT
+            function scrollToClosestSection() {
+                const sections = document.querySelectorAll("[id^='page-']");
+                const scrollPosition = window.scrollY;
+
+                let closestSection = sections[0];
+                let minDistance = Math.abs(sections[0].offsetTop - scrollPosition);
+
+                sections.forEach(section => {
+                    const distance = Math.abs(section.offsetTop - scrollPosition);
+                    if (distance < minDistance) {
+                        minDistance = distance;
+                        closestSection = section;
+                    }
+                });
+
+                closestSection.scrollIntoView({ behavior: 'smooth' });
+            }
+            scrollToClosestSection();
+
         } else {
             errorMessage.classList.add('disabled');
         }
     });
 });
+
+
+
+// LOCAL STORAGE
+// CREDIT: Dannii
+document.addEventListener("DOMContentLoaded", () => {
+    const inputFields = document.querySelectorAll("input");
+
+    inputFields.forEach((inputField) => {
+        const fieldId = inputField.id;
+
+        if (localStorage.getItem(fieldId) !== null) {
+            if (inputField.type === "radio") {
+                inputField.checked = (localStorage.getItem(fieldId) === inputField.value);
+            } else if (inputField.type === "date") {
+                inputField.value = localStorage.getItem(fieldId);
+            } else {
+                inputField.value = localStorage.getItem(fieldId);
+            }
+        }
+
+        if (inputField.type === "radio") {
+            inputField.addEventListener("change", () => {
+                if (inputField.checked) {
+                    localStorage.setItem(fieldId, inputField.value);
+                }
+            });
+        } else {
+            inputField.addEventListener("input", () => {
+                localStorage.setItem(fieldId, inputField.value);
+            });
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -162,7 +225,15 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to renumber all verkrijger sections sequentially
     function renumberVerkrijgerSections() {
-        const allSections = document.querySelectorAll('section');
+        // Find the target container first
+        const targetContainer = document.querySelector('fieldset.number-letter.three-a');
+        if (!targetContainer) {
+            console.error("Target container not found for renumbering");
+            return;
+        }
+
+        // Find all verkrijger sections within the target container
+        const allSections = targetContainer.querySelectorAll('section');
         let counter = 1;
 
         allSections.forEach(section => {
@@ -206,6 +277,39 @@ document.addEventListener('DOMContentLoaded', function () {
         console.log("Renumbered sections. New highest number:", highestVerkrijgerNumber);
     }
 
+    // Function to renumber all verkrijger sections sequentially
+    function removeAllExtraVerkrijgerSections() {
+        // Find all verkrijger sections
+        const targetContainer = document.querySelector('fieldset.number-letter.three-a');
+        const allSections = targetContainer ? targetContainer.querySelectorAll('section h2') : [];
+        const sectionsToRemove = [];
+
+        // Get all sections except the first one
+        let foundFirst = false;
+        allSections.forEach(heading => {
+            if (heading.textContent.includes('Verkrijger')) {
+                if (!foundFirst) {
+                    foundFirst = true;
+                } else {
+                    // Add to removal list
+                    sectionsToRemove.push(heading.closest('section'));
+                }
+            }
+        });
+
+        // Remove all sections in the removal list
+        sectionsToRemove.forEach(section => {
+            const parentContainer = section.closest('div');
+            if (parentContainer) {
+                parentContainer.remove();
+                console.log(`Removed extra section for 'alleen' mode`);
+            }
+        });
+
+        // Renumber the remaining section (should be just one)
+        renumberVerkrijgerSections();
+    }
+
     // Function to handle the add button click
     function handleAddClick(event) {
         // Check if "alleen" radio is checked
@@ -237,15 +341,15 @@ document.addEventListener('DOMContentLoaded', function () {
                 </span>
                 <div>
                     <label for="voornaam-${newNumber}">Voornaam
-                        <input type="text" id="voornaam-${newNumber}" name="voornaam-${newNumber}" title="Alleen letters gebruiken"
+                        <input type="text" id="voornaam-${newNumber}" name="Voornaam ${newNumber}" title="Alleen letters gebruiken"
                             maxlength="50" placeholder="e.g. David" required>
                     </label>
                     <label for="tussenvoegsels-${newNumber}">Tussenvoegsels
-                        <input type="text" id="tussenvoegsels-${newNumber}" name="tussenvoegsels-${newNumber}"
+                        <input type="text" id="tussenvoegsels-${newNumber}" name="Tussenvoegsels ${newNumber}"
                             title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. van den">
                     </label>
                     <label for="achternaam-${newNumber}">Achternaam
-                        <input type="text" id="achternaam-${newNumber}" name="achternaam-${newNumber}"
+                        <input type="text" id="achternaam-${newNumber}" name="Achternaam ${newNumber}"
                             title="Alleen letters gebruiken" maxlength="50" placeholder="e.g. Bijl"
                             required>
                     </label>
@@ -255,9 +359,9 @@ document.addEventListener('DOMContentLoaded', function () {
             <!-- 3 -->
             <div class="three-a--row-three">
                 <span class="left-short">
-                    <label for="bsn-verkrijger-${newNumber}" class="blue-text">Burgerservicenummer overledene</label>
+                    <label for="bsn-verkrijger ${newNumber}" class="blue-text">Burgerservicenummer overledene</label>
                 </span>
-                <input class="short-input" id="bsn-verkrijger-${newNumber}" type="text" name="bsn-${newNumber}"
+                <input class="short-input" id="bsn-verkrijger-${newNumber}" type="text" name="BSN ${newNumber}"
                     title="Alleen nummers gebruiken" placeholder="101234567" pattern="[1-9][0-9]{8}"
                     required>
             </div>
@@ -270,11 +374,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 </span>
                 <div>
                     <label>
-                        <input type="radio" name="verkrijger vermogen-${newNumber}" value="nee" required>
+                        <input type="radio" name="Verkrijger vermogen ${newNumber}" value="nee" required>
                         Nee
                     </label>
                     <label>
-                        <input type="radio" name="verkrijger vermogen-${newNumber}" value="ja">
+                        <input type="radio" name="Verkrijger vermogen ${newNumber}" value="ja">
                         Ja
                     </label>
                 </div>
@@ -288,11 +392,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 </span>
                 <div>
                     <label>
-                        <input type="radio" name="beroep op portie-${newNumber}" value="nee" required>
+                        <input type="radio" name="Beroep op portie ${newNumber}" value="nee" required>
                         Nee
                     </label>
                     <label>
-                        <input type="radio" name="beroep op portie-${newNumber}" value="ja">
+                        <input type="radio" name="Beroep op portie ${newNumber}" value="ja">
                         Ja
                     </label>
                 </div>
@@ -300,23 +404,26 @@ document.addEventListener('DOMContentLoaded', function () {
         </div>
       `;
 
-        // Find the parent container
-        const parentContainer = document.querySelector('section h2')
-            .closest('div').parentNode;
+        // Find the target container - fieldset with class "number-letter three-a"
+        const targetContainer = document.querySelector('fieldset.number-letter.three-a');
+
+        if (!targetContainer) {
+            console.error("Target container 'fieldset.number-letter.three-a' not found!");
+            return;
+        }
 
         // Create a container for the new HTML
         const tempContainer = document.createElement('div');
         tempContainer.innerHTML = newHtml;
 
-        // Insert the new content
-        parentContainer.appendChild(tempContainer.firstElementChild);
+        // Insert the new content directly into the target container
+        targetContainer.appendChild(tempContainer.firstElementChild);
 
         // Update event listeners
         removeAllEventListeners();
         setupButtonListeners();
         updateButtonStates();
 
-        console.log(`Added Verkrijger ${newNumber} section`);
     }
 
     // Function to handle the remove button click
@@ -371,7 +478,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Function to update button states based on current conditions
     function updateButtonStates() {
-        const allSections = document.querySelectorAll('section h2');
+        const targetContainer = document.querySelector('fieldset.number-letter.three-a');
+        const allSections = targetContainer ? targetContainer.querySelectorAll('section h2') : [];
         const addButtons = document.querySelectorAll('.add-button');
         const removeButtons = document.querySelectorAll('.remove-button');
 

@@ -1,0 +1,56 @@
+.start {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    background-color: white;
+    margin-block: 2em;
+    padding: 2em 2em;
+}
+
+.start h1 {
+    font-size: 2em;
+    font-weight: 600;
+    color: #003082;
+}
+
+.start>div:nth-of-type(1) {
+    background-color: #FFC917;
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: .5em;
+}
+
+.start>div h2 {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #003082;
+}
+
+.start>div p {
+    color: #003082;
+}
+
+.start .start-button {
+    width: max-content;
+    margin: 1em auto 1em auto;
+}
+
+.start .start-button>a {
+    border-radius: 3px;
+    padding: 1em 4em;
+    background-color: #0063D3;
+    color: #fff;
+    box-shadow: inset 0 -2.5px 0 rgba(0, 0, 0, 0.3);
+    width: max-content;
+}
+
+@media (min-width: 700px) {
+
+    .start {
+        max-width: 800px;
+        margin: 2em auto;
+        padding: 2em 3em;
+    }
+}
