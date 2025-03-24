@@ -133,7 +133,7 @@ img {
 
 input:user-valid {
   border-left: 5px #009A42 solid !important;
-  background-image: url('/images/valid.png');
+  background-image: url('../images/valid.png');
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 10px;
@@ -141,7 +141,7 @@ input:user-valid {
 
 input:user-invalid {
   border-left: 5px #DB0029 solid !important;
-  background-image: url('/images/error.png');
+  background-image: url('../images/error.png');
   background-repeat: no-repeat;
   background-position: right 10px center;
   background-size: 15px;
@@ -318,7 +318,7 @@ header img {
   top: 0;
   left: -2em;
 
-  background-image: url(/images/error-symbol.svg);
+  background-image: url(../images/error-symbol.svg);
   background-repeat: no-repeat;
   background-size: 1em;
 }

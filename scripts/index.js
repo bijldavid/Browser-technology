@@ -1,4 +1,5 @@
 // REMOVE VALIDATION WHEN EMPTY
+// CREDIT: Claude AI
 function resetEmptyInputValidation() {
     const allInputs = document.querySelectorAll('input');
 
